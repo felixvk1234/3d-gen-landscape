@@ -407,7 +407,7 @@
     </section>
 
     <p class="footer-note">
-      Data source: local <code>data.json</code> enriched via the arXiv API. Expand any row to inspect abstract, categories, references, and additional metadata.
+      Data source: local <code>datav2.json</code> enriched via the arXiv API. Expand any row to inspect abstract, categories, references, and additional metadata.
     </p>
   </main>
 
@@ -640,7 +640,7 @@
 
     async function init() {
       try {
-        const response = await fetch("./data.json");
+        const response = await fetch("./datav2.json");
         const data = await response.json();
         state.allRows = Array.isArray(data) ? data : [];
 
@@ -649,7 +649,7 @@
         bindEvents();
         applyFilters();
       } catch (error) {
-        elements.resultsNote.textContent = "Failed to load data.json";
+        elements.resultsNote.textContent = "Failed to load datav2.json";
         elements.emptyState.hidden = false;
         elements.emptyState.textContent = `Could not load data: ${error.message}`;
       }
