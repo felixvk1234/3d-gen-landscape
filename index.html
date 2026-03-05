@@ -370,44 +370,33 @@
       padding: 0.9rem 0.85rem 0.95rem;
     }
 
-    .timeline-viewport {
-      overflow-x: auto;
-      padding-bottom: 0.32rem;
-    }
-
     .timeline-track {
       position: relative;
-      display: flex;
-      align-items: flex-start;
-      min-height: 6.1rem;
-      min-width: max-content;
-      padding: 1.25rem 0.55rem 2rem;
-      gap: 0;
+      height: 220px;
+      margin-top: 0.25rem;
+      --axis-offset: 52px;
     }
 
     .timeline-track::before {
       content: "";
       position: absolute;
-      left: 0.6rem;
-      right: 0.6rem;
-      top: 1.82rem;
+      left: 2%;
+      right: 2%;
+      bottom: var(--axis-offset);
       height: 2px;
       background: linear-gradient(to right, #ccb991, #bca780);
       opacity: 0.85;
     }
 
     .timeline-node {
-      position: relative;
-      flex: 0 0 4.9rem;
-      display: flex;
-      justify-content: center;
+      position: absolute;
+      left: 50%;
+      bottom: calc(var(--axis-offset) + (var(--stack, 0) * 20px));
+      transform: translateX(-50%);
     }
 
     .timeline-node-btn {
-      position: absolute;
-      left: 50%;
-      top: 1.5rem;
-      transform: translateX(-50%);
+      position: relative;
       width: 0.92rem;
       height: 0.92rem;
       border-radius: 50%;
@@ -420,7 +409,7 @@
 
     .timeline-node-btn:hover {
       background: #e8d2aa;
-      transform: translateX(-50%) scale(1.06);
+      transform: scale(1.06);
     }
 
     .timeline-node-btn.is-active {
@@ -429,21 +418,28 @@
       box-shadow: 0 0 0 4px rgba(125, 90, 47, 0.18);
     }
 
-    .timeline-node-year {
+    .timeline-year-marker {
       position: absolute;
-      top: 2.95rem;
-      transform: translateX(-50%);
       left: 50%;
+      bottom: 0.75rem;
+      transform: translateX(-50%);
       color: #6e5a3f;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       white-space: nowrap;
       user-select: none;
     }
 
-    .timeline-node-year.is-hidden {
-      opacity: 0;
+    .timeline-year-marker::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -14px;
+      width: 1px;
+      height: 10px;
+      background: rgba(109, 87, 55, 0.6);
     }
 
     .timeline-detail {
@@ -550,11 +546,7 @@
       }
 
       .timeline-track {
-        padding: 1.2rem 0.4rem 1.95rem;
-      }
-
-      .timeline-node {
-        flex-basis: 4.2rem;
+        --axis-offset: 48px;
       }
     }
   </style>
@@ -622,9 +614,7 @@
 
     <section id="timelineView" class="timeline-shell" aria-label="Paper timeline view" hidden>
       <div id="timelineEmpty" class="timeline-empty" hidden>No records to display in timeline.</div>
-      <div class="timeline-viewport">
-        <div id="timelineTrack" class="timeline-track"></div>
-      </div>
+      <div id="timelineTrack" class="timeline-track"></div>
       <article id="timelineDetail" class="timeline-detail" hidden></article>
     </section>
 
@@ -701,6 +691,32 @@
 
     function getTimelineKey(row) {
       return String(row.arxiv_meta?.entry_id || row.arxiv || row.name || "");
+    }
+
+    function getTimelineMonthData(row) {
+      const published = row.arxiv_meta?.published;
+      if (published) {
+        const d = new Date(published);
+        if (!Number.isNaN(d.getTime())) {
+          const year = d.getUTCFullYear();
+          const month = d.getUTCMonth();
+          return {
+            year,
+            month,
+            monthKey: `${year}-${String(month + 1).padStart(2, "0")}`,
+            monthTs: Date.UTC(year, month, 1)
+          };
+        }
+      }
+
+      const fallbackYear = Number(row.year);
+      const year = Number.isFinite(fallbackYear) ? fallbackYear : 1970;
+      return {
+        year,
+        month: 0,
+        monthKey: `${year}-01`,
+        monthTs: Date.UTC(year, 0, 1)
+      };
     }
 
     function getSearchBlob(row) {
@@ -864,23 +880,35 @@
         state.timelineSelectionKey = getTimelineKey(ordered[0]);
       }
 
-      const html = [];
-      let currentYear = null;
+      const monthData = ordered.map((row) => ({ row, ...getTimelineMonthData(row) }));
+      const minMonthTs = Math.min(...monthData.map((d) => d.monthTs));
+      const maxMonthTs = Math.max(...monthData.map((d) => d.monthTs));
+      const totalSpan = Math.max(1, maxMonthTs - minMonthTs);
 
-      for (const row of ordered) {
+      const monthStacks = new Map();
+      const yearMarkers = new Map();
+      let maxStack = 0;
+      const pointHtml = [];
+
+      for (const item of monthData) {
+        const { row, year, monthTs, monthKey } = item;
         const m = row.arxiv_meta || {};
-        const publishedTs = getChronoTimestamp(row);
-        const date = new Date(publishedTs);
-        const fallbackYear = Number.isFinite(Number(row.year)) ? Number(row.year) : date.getUTCFullYear();
-        const rowYear = m.published ? date.getUTCFullYear() : fallbackYear;
-        const showYear = currentYear !== rowYear;
-        currentYear = rowYear;
+        const normalized = (monthTs - minMonthTs) / totalSpan;
+        const xPercent = totalSpan === 1 ? 50 : 2 + (normalized * 96);
+        const stackIndex = monthStacks.get(monthKey) || 0;
+        monthStacks.set(monthKey, stackIndex + 1);
+        maxStack = Math.max(maxStack, stackIndex);
+
+        if (!yearMarkers.has(year)) {
+          yearMarkers.set(year, xPercent);
+        }
+
         const key = getTimelineKey(row);
         const isActive = key === state.timelineSelectionKey;
-        const pointTitle = `${row.name || "Unknown"} · ${m.published ? formatDate(m.published) : rowYear}`;
+        const pointTitle = `${row.name || "Unknown"} · ${m.published ? formatDate(m.published) : `${year}-${String(item.month + 1).padStart(2, "0")}`}`;
 
-        html.push(`
-          <div class="timeline-node">
+        pointHtml.push(`
+          <div class="timeline-node" style="left: ${xPercent.toFixed(3)}%; --stack: ${stackIndex};">
             <button
               class="timeline-node-btn${isActive ? " is-active" : ""}"
               type="button"
@@ -888,12 +916,16 @@
               title="${escapeHtml(pointTitle)}"
               aria-label="${escapeHtml(pointTitle)}"
             ></button>
-            <span class="timeline-node-year${showYear ? "" : " is-hidden"}">${escapeHtml(String(rowYear))}</span>
           </div>
         `);
       }
 
-      elements.timelineTrack.innerHTML = html.join("");
+      elements.timelineTrack.style.height = `${Math.max(210, 160 + ((maxStack + 1) * 22))}px`;
+      const yearHtml = [...yearMarkers.entries()]
+        .map(([year, left]) => `<span class="timeline-year-marker" style="left: ${left.toFixed(3)}%">${escapeHtml(String(year))}</span>`)
+        .join("");
+
+      elements.timelineTrack.innerHTML = pointHtml.join("") + yearHtml;
       const selected = ordered.find((row) => getTimelineKey(row) === state.timelineSelectionKey) || ordered[0];
       renderTimelineDetail(selected);
     }
