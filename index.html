@@ -101,6 +101,36 @@
       letter-spacing: 0.08em;
     }
 
+    .view-tabs {
+      margin-top: 0.9rem;
+      display: flex;
+      gap: 0.45rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.4rem;
+    }
+
+    .view-tab {
+      border: 1px solid #c8b79c;
+      background: #efe4cd;
+      color: #4a3925;
+      font-family: inherit;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.36rem 0.62rem;
+      cursor: pointer;
+    }
+
+    .view-tab:hover {
+      background: #e8dac0;
+    }
+
+    .view-tab.is-active {
+      background: #dcc9a7;
+      border-color: #a68a63;
+      color: #2f2418;
+    }
+
     .controls {
       margin-top: 1rem;
       display: grid;
@@ -153,6 +183,14 @@
       border: 1px solid var(--line);
       background: rgba(255, 253, 247, 0.9);
       overflow-x: auto;
+    }
+
+    .section-heading {
+      margin: 1rem 0 0.35rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.42rem;
+      color: #2f2316;
+      letter-spacing: 0.02em;
     }
 
     table {
@@ -325,6 +363,127 @@
       line-height: 1.4;
     }
 
+    .timeline-shell {
+      margin-top: 0.45rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 247, 0.9);
+      padding: 0.9rem 0.85rem 0.95rem;
+    }
+
+    .timeline-track {
+      position: relative;
+      padding-left: 1.45rem;
+    }
+
+    .timeline-track::before {
+      content: "";
+      position: absolute;
+      left: 0.44rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #ccb991, #bca780);
+      opacity: 0.8;
+    }
+
+    .timeline-year-break {
+      position: relative;
+      margin: 0.28rem 0 0.28rem;
+      padding-left: 0.45rem;
+    }
+
+    .timeline-year-break span {
+      display: inline-block;
+      border: 1px solid #c6b28e;
+      background: #efe3cb;
+      color: #4a3925;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.14rem 0.42rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 0.52rem 0 0.58rem;
+      padding-left: 0.4rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.35rem;
+      top: 0.52rem;
+      width: 0.66rem;
+      height: 0.66rem;
+      border-radius: 50%;
+      border: 1px solid #99784d;
+      background: #f2e4ca;
+      box-shadow: 0 0 0 2px rgba(246, 242, 232, 0.95);
+    }
+
+    .timeline-card {
+      border: 1px solid rgba(204, 191, 168, 0.9);
+      background: #fffef9;
+      padding: 0.58rem 0.62rem;
+    }
+
+    .timeline-date {
+      margin: 0;
+      color: #6f5d45;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .timeline-model {
+      margin: 0.16rem 0 0;
+      font-size: 1rem;
+      color: #1f2932;
+      font-weight: 600;
+    }
+
+    .timeline-paper {
+      margin: 0.12rem 0 0;
+      font-size: 0.87rem;
+      color: var(--ink-soft);
+      line-height: 1.34;
+    }
+
+    .timeline-meta {
+      margin-top: 0.35rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .timeline-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.32rem;
+    }
+
+    .timeline-link {
+      text-decoration: none;
+      border: 1px solid #c1ad8d;
+      color: #4a3621;
+      background: #f2e7d2;
+      padding: 0.14rem 0.38rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .timeline-link:hover {
+      background: #ecdfc7;
+    }
+
+    .timeline-empty {
+      color: #6f624d;
+      font-style: italic;
+      padding: 0.2rem 0.1rem;
+    }
+
     @media (max-width: 980px) {
       .controls {
         grid-template-columns: 1fr 1fr;
@@ -334,6 +493,10 @@
     @media (max-width: 640px) {
       .page {
         padding: 1.5rem 0.7rem 2rem;
+      }
+
+      .view-tabs {
+        flex-wrap: wrap;
       }
 
       .controls {
@@ -347,6 +510,18 @@
       h1 {
         font-size: 2rem;
       }
+
+      .timeline-shell {
+        padding: 0.72rem 0.62rem 0.8rem;
+      }
+
+      .timeline-track {
+        padding-left: 1.2rem;
+      }
+
+      .timeline-dot {
+        left: -1.12rem;
+      }
     }
   </style>
 </head>
@@ -357,6 +532,11 @@
       <p class="subtitle">An academically styled index of modern 3D generation systems with arXiv metadata and paper-level detail.</p>
       <div class="summary-strip" id="summaryStrip"></div>
     </section>
+
+    <nav class="view-tabs" aria-label="Data view tabs">
+      <button id="tableTab" class="view-tab is-active" type="button" aria-selected="true">Catalogue Table</button>
+      <button id="timelineTab" class="view-tab" type="button" aria-selected="false">Publication Timeline</button>
+    </nav>
 
     <section class="controls" aria-label="Filtering and sorting controls">
       <div class="control">
@@ -388,7 +568,7 @@
 
     <p id="resultsNote" class="results-note"></p>
 
-    <section class="table-shell">
+    <section id="tableView" class="table-shell">
       <table>
         <thead>
           <tr>
@@ -406,6 +586,11 @@
       <div id="emptyState" class="empty-state" hidden>No records match the current filters.</div>
     </section>
 
+    <section id="timelineView" class="timeline-shell" aria-label="Paper timeline view" hidden>
+      <div id="timelineTrack" class="timeline-track"></div>
+      <div id="timelineEmpty" class="timeline-empty" hidden>No records to display in timeline.</div>
+    </section>
+
     <p class="footer-note">
       Data source: local <code>datav2.json</code> enriched via the arXiv API. Expand any row to inspect abstract, categories, references, and additional metadata.
     </p>
@@ -418,7 +603,8 @@
       query: "",
       category: "all",
       year: "all",
-      sort: "year_desc"
+      sort: "year_desc",
+      view: "table"
     };
 
     const elements = {
@@ -427,9 +613,15 @@
       categoryFilter: document.getElementById("categoryFilter"),
       yearFilter: document.getElementById("yearFilter"),
       sortSelect: document.getElementById("sortSelect"),
+      tableTab: document.getElementById("tableTab"),
+      timelineTab: document.getElementById("timelineTab"),
       resultsNote: document.getElementById("resultsNote"),
+      tableView: document.getElementById("tableView"),
+      timelineView: document.getElementById("timelineView"),
       paperTableBody: document.getElementById("paperTableBody"),
-      emptyState: document.getElementById("emptyState")
+      emptyState: document.getElementById("emptyState"),
+      timelineTrack: document.getElementById("timelineTrack"),
+      timelineEmpty: document.getElementById("timelineEmpty")
     };
 
     function escapeHtml(value) {
@@ -456,6 +648,16 @@
       if (!authors.length) return "-";
       if (authors.length <= 3) return authors.join(", ");
       return `${authors.slice(0, 3).join(", ")} +${authors.length - 3}`;
+    }
+
+    function getChronoTimestamp(row) {
+      const published = Date.parse(row.arxiv_meta?.published || "");
+      if (!Number.isNaN(published)) return published;
+
+      const year = Number(row.year);
+      if (Number.isFinite(year)) return Date.parse(`${year}-01-01T00:00:00Z`);
+
+      return Date.parse("1970-01-01T00:00:00Z");
     }
 
     function getSearchBlob(row) {
@@ -526,7 +728,9 @@
 
       state.filteredRows = rows;
       renderRows();
-      elements.resultsNote.textContent = `${rows.length} papers shown`;
+      renderTimeline(rows);
+      const viewLabel = state.view === "timeline" ? "timeline" : "table";
+      elements.resultsNote.textContent = `${rows.length} papers shown (${viewLabel} view)`;
     }
 
     function renderRows() {
@@ -602,6 +806,72 @@
       }).join("");
     }
 
+    function renderTimeline(rows) {
+      if (!rows.length) {
+        elements.timelineTrack.innerHTML = "";
+        elements.timelineEmpty.hidden = false;
+        return;
+      }
+
+      elements.timelineEmpty.hidden = true;
+      const ordered = [...rows].sort((a, b) => getChronoTimestamp(a) - getChronoTimestamp(b));
+
+      let currentYear = null;
+      const html = [];
+
+      for (const row of ordered) {
+        const m = row.arxiv_meta || {};
+        const publishedTs = getChronoTimestamp(row);
+        const date = new Date(publishedTs);
+        const fallbackYear = Number.isFinite(Number(row.year)) ? Number(row.year) : date.getUTCFullYear();
+        const rowYear = m.published ? date.getUTCFullYear() : fallbackYear;
+
+        if (currentYear !== rowYear) {
+          currentYear = rowYear;
+          html.push(`<div class="timeline-year-break"><span>${escapeHtml(currentYear)}</span></div>`);
+        }
+
+        const links = [
+          row.arxiv ? `<a class="timeline-link" href="${escapeHtml(row.arxiv)}" target="_blank" rel="noopener noreferrer">PDF</a>` : "",
+          m.abs_url ? `<a class="timeline-link" href="${escapeHtml(m.abs_url)}" target="_blank" rel="noopener noreferrer">Abstract</a>` : "",
+          row.github ? `<a class="timeline-link" href="${escapeHtml(row.github)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ""
+        ].filter(Boolean).join("");
+
+        html.push(`
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-date">${escapeHtml(m.published ? formatDate(m.published) : String(rowYear))}</p>
+              <p class="timeline-model">${escapeHtml(row.name || "Unknown model")}</p>
+              <p class="timeline-paper">${escapeHtml(m.title || "Unknown title")}</p>
+              <div class="timeline-meta">
+                <span class="chip">${escapeHtml(row.category || "Unknown")}</span>
+                <span class="muted">${escapeHtml(m.primary_category || "-")}</span>
+              </div>
+              <div class="timeline-links">${links || '<span class="muted">No links available</span>'}</div>
+            </div>
+          </article>
+        `);
+      }
+
+      elements.timelineTrack.innerHTML = html.join("");
+    }
+
+    function setView(view) {
+      state.view = view === "timeline" ? "timeline" : "table";
+      const showTimeline = state.view === "timeline";
+
+      elements.tableView.hidden = showTimeline;
+      elements.timelineView.hidden = !showTimeline;
+
+      elements.tableTab.classList.toggle("is-active", !showTimeline);
+      elements.timelineTab.classList.toggle("is-active", showTimeline);
+      elements.tableTab.setAttribute("aria-selected", showTimeline ? "false" : "true");
+      elements.timelineTab.setAttribute("aria-selected", showTimeline ? "true" : "false");
+
+      elements.resultsNote.textContent = `${state.filteredRows.length} papers shown (${state.view} view)`;
+    }
+
     function bindEvents() {
       elements.searchInput.addEventListener("input", (event) => {
         state.query = event.target.value;
@@ -622,6 +892,9 @@
         state.sort = event.target.value;
         applyFilters();
       });
+
+      elements.tableTab.addEventListener("click", () => setView("table"));
+      elements.timelineTab.addEventListener("click", () => setView("timeline"));
 
       elements.paperTableBody.addEventListener("click", (event) => {
         const target = event.target.closest("[data-detail-toggle]");
@@ -648,6 +921,7 @@
         populateFilters(state.allRows);
         bindEvents();
         applyFilters();
+        setView("table");
       } catch (error) {
         elements.resultsNote.textContent = "Failed to load datav2.json";
         elements.emptyState.hidden = false;
