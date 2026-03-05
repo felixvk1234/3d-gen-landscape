@@ -1,56 +1,661 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Gen Landscape 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Generation Literature Atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f6f2e8;
+      --paper-deep: #ebe5d7;
+      --ink: #1e2a33;
+      --ink-soft: #4a5965;
+      --accent: #7d5a2f;
+      --accent-soft: #d8c7aa;
+      --line: #ccbfa8;
+      --header-bg: #efe7d6;
+      --row-hover: #f2ebdc;
+      --chip-bg: #e5d7bc;
+      --chip-text: #4f3f2a;
+      --ok: #2f5f49;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, serif;
+      background:
+        radial-gradient(circle at 15% 10%, #fffef8 0%, transparent 40%),
+        radial-gradient(circle at 85% 90%, #fffdf5 0%, transparent 45%),
+        var(--paper);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(30, 42, 51, 0.03) 0,
+        rgba(30, 42, 51, 0.03) 1px,
+        transparent 1px,
+        transparent 28px
+      );
+      mix-blend-mode: multiply;
+      opacity: 0.6;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .masthead {
+      border: 1px solid var(--line);
+      padding: 1.2rem 1.25rem;
+      background: rgba(255, 253, 247, 0.85);
+      backdrop-filter: blur(1px);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: #212121;
+    }
+
+    .subtitle {
+      margin: 0.4rem 0 0;
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+    }
+
+    .summary-strip {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .summary-item {
+      border: 1px solid var(--line);
+      background: var(--paper-deep);
+      color: #3d2f1f;
+      padding: 0.32rem 0.55rem;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .controls {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 0.6rem;
+      border: 1px solid var(--line);
+      padding: 0.85rem;
+      background: rgba(248, 243, 233, 0.78);
+    }
+
+    .control {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    label {
+      font-size: 0.73rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5b4830;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+      color: var(--ink);
+      padding: 0.55rem 0.62rem;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 0.95rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: 2px solid rgba(125, 90, 47, 0.2);
+      border-color: var(--accent);
+    }
+
+    .results-note {
+      margin: 0.65rem 0 0;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .table-shell {
+      margin-top: 0.7rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 247, 0.9);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+
+    thead th {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--line);
+      color: #443525;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 0.66rem 0.68rem;
+      vertical-align: top;
+    }
+
+    tbody td {
+      border-bottom: 1px solid rgba(204, 191, 168, 0.8);
+      padding: 0.62rem 0.68rem;
+      vertical-align: top;
+      font-size: 0.94rem;
+    }
+
+    tbody tr.paper-row:hover td {
+      background: var(--row-hover);
+    }
+
+    .name-cell {
+      max-width: 340px;
+    }
+
+    .model-name {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1d2730;
+    }
+
+    .paper-title {
+      margin-top: 0.2rem;
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      line-height: 1.3;
+    }
+
+    .chip {
+      display: inline-block;
+      border: 1px solid #cabba0;
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      padding: 0.17rem 0.45rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .link-pill,
+    .toggle-btn {
+      text-decoration: none;
+      border: 1px solid #b8a68a;
+      color: #3c301f;
+      background: #f0e6d4;
+      padding: 0.22rem 0.48rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .link-pill:hover,
+    .toggle-btn:hover {
+      background: #e7d9c0;
+    }
+
+    .muted {
+      color: #7a6c57;
+      font-size: 0.84rem;
+      font-style: italic;
+    }
+
+    .details-row {
+      display: none;
+    }
+
+    .details-row.is-open {
+      display: table-row;
+    }
+
+    .details-cell {
+      padding: 0.95rem 0.8rem 1rem;
+      background: #fcf9f1;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .details-block {
+      border: 1px solid rgba(204, 191, 168, 0.9);
+      background: #fffef9;
+      padding: 0.75rem;
+    }
+
+    .abstract {
+      margin: 0;
+      line-height: 1.52;
+      color: #2b3740;
+      font-size: 0.93rem;
+      text-wrap: pretty;
+    }
+
+    .meta-grid {
+      margin-top: 0.72rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .meta-item {
+      border: 1px solid rgba(204, 191, 168, 0.75);
+      background: #faf6ec;
+      padding: 0.48rem;
+      font-size: 0.86rem;
+    }
+
+    .meta-key {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-size: 0.68rem;
+      color: #6a573a;
+      margin-bottom: 0.2rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.68rem;
+    }
+
+    .subject-tag {
+      font-size: 0.74rem;
+      border: 1px solid #cdbda1;
+      padding: 0.14rem 0.42rem;
+      background: #f5ecd9;
+      color: #473826;
+    }
+
+    .empty-state {
+      padding: 1rem;
+      color: #6f624d;
+      font-style: italic;
+    }
+
+    .footer-note {
+      margin-top: 0.75rem;
+      color: #6a5d49;
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 980px) {
+      .controls {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 1.5rem 0.7rem 2rem;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-900 text-white p-8">
-    <div class="max-w-6xl mx-auto">
-        <header class="mb-10">
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                3D Generation Model Landscape
-            </h1>
-            <p class="text-slate-400 mt-2">Dynamic overview of SOTA 3D generative AI (2023-2026)</p>
-        </header>
+<body>
+  <main class="page">
+    <section class="masthead">
+      <h1>3D Generation Literature Atlas</h1>
+      <p class="subtitle">An academically styled index of modern 3D generation systems with arXiv metadata and paper-level detail.</p>
+      <div class="summary-strip" id="summaryStrip"></div>
+    </section>
 
-        <div id="wrapper"></div>
-    </div>
+    <section class="controls" aria-label="Filtering and sorting controls">
+      <div class="control">
+        <label for="searchInput">Search</label>
+        <input id="searchInput" type="search" placeholder="Model, title, author, abstract, category...">
+      </div>
+      <div class="control">
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter">
+          <option value="all">All categories</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="yearFilter">Year</label>
+        <select id="yearFilter">
+          <option value="all">All years</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="sortSelect">Sort</label>
+        <select id="sortSelect">
+          <option value="year_desc">Year (newest first)</option>
+          <option value="year_asc">Year (oldest first)</option>
+          <option value="published_desc">Published (newest)</option>
+          <option value="name_asc">Name (A-Z)</option>
+        </select>
+      </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
-    <script>
-        new gridjs.Grid({
-            search: true,
-            sort: true,
-            resizable: true,
-            columns: [
-                { name: "Year", width: '100px' },
-                "Name",
-                { 
-                    name: "Category", 
-                    formatter: (cell) => gridjs.html(`<span class="px-2 py-1 rounded text-xs font-bold bg-slate-700 text-blue-300">${cell}</span>`)
-                },
-                { 
-                    name: "Paper", 
-                    formatter: (cell) => gridjs.html(`<a href="${cell}" target="_blank" class="text-emerald-400 hover:underline text-sm">arXiv ↗</a>`) 
-                },
-                { 
-                    name: "GitHub", 
-                    formatter: (cell) => gridjs.html(`<a href="${cell}" target="_blank" class="text-blue-400 hover:underline text-sm">Repo ↗</a>`) 
-                }
-            ],
-            server: {
-                url: "./data.json",
-                then: data => data.map(m => [m.year, m.name, m.category, m.arxiv, m.github])
-            },
-            style: {
-                table: { border: 'none' },
-                th: { background: '#1e293b', color: '#94a3b8', border: 'none' },
-                td: { background: '#0f172a', color: '#cbd5e1', border: 'none' }
-            }
-        }).render(document.getElementById("wrapper"));
-    </script>
+    <p id="resultsNote" class="results-note"></p>
+
+    <section class="table-shell">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 72px;">Year</th>
+            <th>Model / Paper</th>
+            <th style="width: 130px;">Category</th>
+            <th style="width: 120px;">Primary Field</th>
+            <th style="width: 138px;">Published</th>
+            <th style="width: 122px;">Authors</th>
+            <th style="width: 230px;">Resources</th>
+          </tr>
+        </thead>
+        <tbody id="paperTableBody"></tbody>
+      </table>
+      <div id="emptyState" class="empty-state" hidden>No records match the current filters.</div>
+    </section>
+
+    <p class="footer-note">
+      Data source: local <code>data.json</code> enriched via the arXiv API. Expand any row to inspect abstract, categories, references, and additional metadata.
+    </p>
+  </main>
+
+  <script>
+    const state = {
+      allRows: [],
+      filteredRows: [],
+      query: "",
+      category: "all",
+      year: "all",
+      sort: "year_desc"
+    };
+
+    const elements = {
+      summaryStrip: document.getElementById("summaryStrip"),
+      searchInput: document.getElementById("searchInput"),
+      categoryFilter: document.getElementById("categoryFilter"),
+      yearFilter: document.getElementById("yearFilter"),
+      sortSelect: document.getElementById("sortSelect"),
+      resultsNote: document.getElementById("resultsNote"),
+      paperTableBody: document.getElementById("paperTableBody"),
+      emptyState: document.getElementById("emptyState")
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function formatDate(value) {
+      if (!value) return "-";
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return "-";
+      return new Intl.DateTimeFormat("en", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit"
+      }).format(d);
+    }
+
+    function compactAuthors(authors = []) {
+      if (!authors.length) return "-";
+      if (authors.length <= 3) return authors.join(", ");
+      return `${authors.slice(0, 3).join(", ")} +${authors.length - 3}`;
+    }
+
+    function getSearchBlob(row) {
+      const m = row.arxiv_meta || {};
+      return [
+        row.name,
+        row.category,
+        m.title,
+        m.summary,
+        (m.authors || []).join(" "),
+        (m.categories || []).join(" "),
+        m.primary_category
+      ]
+        .join(" ")
+        .toLowerCase();
+    }
+
+    function renderSummary(rows) {
+      if (!rows.length) {
+        elements.summaryStrip.innerHTML = '<span class="summary-item">No records loaded</span>';
+        return;
+      }
+
+      const years = rows.map((r) => Number(r.year)).filter((y) => Number.isFinite(y));
+      const categories = new Set(rows.map((r) => r.category).filter(Boolean));
+      const withAbstract = rows.filter((r) => r.arxiv_meta?.summary).length;
+      const range = years.length ? `${Math.min(...years)}-${Math.max(...years)}` : "n/a";
+
+      elements.summaryStrip.innerHTML = [
+        `<span class="summary-item">Entries: ${rows.length}</span>`,
+        `<span class="summary-item">Category families: ${categories.size}</span>`,
+        `<span class="summary-item">Coverage window: ${range}</span>`,
+        `<span class="summary-item">Abstracts available: ${withAbstract}</span>`
+      ].join("");
+    }
+
+    function populateFilters(rows) {
+      const categories = [...new Set(rows.map((r) => r.category).filter(Boolean))].sort();
+      const years = [...new Set(rows.map((r) => String(r.year)).filter(Boolean))].sort((a, b) => Number(b) - Number(a));
+
+      elements.categoryFilter.innerHTML = '<option value="all">All categories</option>' +
+        categories.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
+
+      elements.yearFilter.innerHTML = '<option value="all">All years</option>' +
+        years.map((y) => `<option value="${escapeHtml(y)}">${escapeHtml(y)}</option>`).join("");
+    }
+
+    function applyFilters() {
+      const q = state.query.trim().toLowerCase();
+
+      let rows = state.allRows.filter((row) => {
+        const byCategory = state.category === "all" || row.category === state.category;
+        const byYear = state.year === "all" || String(row.year) === state.year;
+        const byQuery = !q || getSearchBlob(row).includes(q);
+        return byCategory && byYear && byQuery;
+      });
+
+      rows.sort((a, b) => {
+        if (state.sort === "year_asc") return Number(a.year) - Number(b.year);
+        if (state.sort === "name_asc") return String(a.name).localeCompare(String(b.name));
+        if (state.sort === "published_desc") {
+          const ap = Date.parse(a.arxiv_meta?.published || "1970-01-01");
+          const bp = Date.parse(b.arxiv_meta?.published || "1970-01-01");
+          return bp - ap;
+        }
+        return Number(b.year) - Number(a.year);
+      });
+
+      state.filteredRows = rows;
+      renderRows();
+      elements.resultsNote.textContent = `${rows.length} papers shown`;
+    }
+
+    function renderRows() {
+      if (!state.filteredRows.length) {
+        elements.paperTableBody.innerHTML = "";
+        elements.emptyState.hidden = false;
+        return;
+      }
+
+      elements.emptyState.hidden = true;
+
+      elements.paperTableBody.innerHTML = state.filteredRows.map((row, index) => {
+        const m = row.arxiv_meta || {};
+        const detailId = `detail-${index}`;
+        const summary = m.summary || "No abstract available.";
+
+        const categories = (m.categories || [])
+          .slice(0, 8)
+          .map((tag) => `<span class="subject-tag">${escapeHtml(tag)}</span>`)
+          .join("");
+
+        const resources = [
+          row.arxiv ? `<a class="link-pill" href="${escapeHtml(row.arxiv)}" target="_blank" rel="noopener noreferrer">arXiv PDF</a>` : "",
+          m.abs_url ? `<a class="link-pill" href="${escapeHtml(m.abs_url)}" target="_blank" rel="noopener noreferrer">Abstract</a>` : "",
+          row.github ? `<a class="link-pill" href="${escapeHtml(row.github)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : '<span class="muted">No repository</span>',
+          `<button class="toggle-btn" type="button" data-detail-toggle="${detailId}">Expand</button>`
+        ].filter(Boolean).join("");
+
+        return `
+          <tr class="paper-row">
+            <td>${escapeHtml(row.year)}</td>
+            <td class="name-cell">
+              <p class="model-name">${escapeHtml(row.name)}</p>
+              <div class="paper-title">${escapeHtml(m.title || "Unknown title")}</div>
+            </td>
+            <td><span class="chip">${escapeHtml(row.category || "Unknown")}</span></td>
+            <td>${escapeHtml(m.primary_category || "-")}</td>
+            <td>${escapeHtml(formatDate(m.published))}</td>
+            <td>${escapeHtml(compactAuthors(m.authors || []))}</td>
+            <td><div class="link-row">${resources}</div></td>
+          </tr>
+          <tr id="${detailId}" class="details-row" aria-hidden="true">
+            <td colspan="7" class="details-cell">
+              <article class="details-block">
+                <p class="abstract">${escapeHtml(summary)}</p>
+                <div class="tag-list">${categories || '<span class="muted">No categories listed.</span>'}</div>
+                <div class="meta-grid">
+                  <div class="meta-item">
+                    <span class="meta-key">Authors</span>
+                    ${escapeHtml((m.authors || []).join(", ") || "-")}
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-key">Version / Updated</span>
+                    v${escapeHtml(m.version || "-")} | ${escapeHtml(formatDate(m.updated))}
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-key">Journal Reference</span>
+                    ${escapeHtml(m.journal_ref || "-")}
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-key">DOI</span>
+                    ${escapeHtml(m.doi || "-")}
+                  </div>
+                  <div class="meta-item" style="grid-column: 1 / -1;">
+                    <span class="meta-key">Comment</span>
+                    ${escapeHtml(m.comment || "-")}
+                  </div>
+                </div>
+              </article>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function bindEvents() {
+      elements.searchInput.addEventListener("input", (event) => {
+        state.query = event.target.value;
+        applyFilters();
+      });
+
+      elements.categoryFilter.addEventListener("change", (event) => {
+        state.category = event.target.value;
+        applyFilters();
+      });
+
+      elements.yearFilter.addEventListener("change", (event) => {
+        state.year = event.target.value;
+        applyFilters();
+      });
+
+      elements.sortSelect.addEventListener("change", (event) => {
+        state.sort = event.target.value;
+        applyFilters();
+      });
+
+      elements.paperTableBody.addEventListener("click", (event) => {
+        const target = event.target.closest("[data-detail-toggle]");
+        if (!target) return;
+
+        const detailId = target.getAttribute("data-detail-toggle");
+        const row = document.getElementById(detailId);
+        if (!row) return;
+
+        const opening = !row.classList.contains("is-open");
+        row.classList.toggle("is-open", opening);
+        row.setAttribute("aria-hidden", opening ? "false" : "true");
+        target.textContent = opening ? "Collapse" : "Expand";
+      });
+    }
+
+    async function init() {
+      try {
+        const response = await fetch("./data.json");
+        const data = await response.json();
+        state.allRows = Array.isArray(data) ? data : [];
+
+        renderSummary(state.allRows);
+        populateFilters(state.allRows);
+        bindEvents();
+        applyFilters();
+      } catch (error) {
+        elements.resultsNote.textContent = "Failed to load data.json";
+        elements.emptyState.hidden = false;
+        elements.emptyState.textContent = `Could not load data: ${error.message}`;
+      }
+    }
+
+    init();
+  </script>
 </body>
 </html>
