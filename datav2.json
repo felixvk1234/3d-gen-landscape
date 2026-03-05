@@ -588,32 +588,35 @@
     "year": 2021,
     "name": "AutoCAD-AI Gen",
     "category": "Procedural",
-    "arxiv": "https://arxiv.org/pdf/2105.10178",
+    "arxiv": "https://arxiv.org/pdf/2508.00843",
     "github": "",
     "arxiv_meta": {
       "found": true,
-      "requested_id": "2105.10178",
-      "entry_id": "2105.10178v1",
+      "requested_id": "2508.00843",
+      "entry_id": "2508.00843v1",
       "version": 1,
-      "title": "Thermodynamics of scale-dependent Friedmann equations",
-      "summary": "In this work, the role of a time-varying Newton constant under the scale-dependent approach is investigated in the thermodynamics of the Friedman equations. In particular, we show that the extended Friedman equations can be derived either from equilibrium thermodynamics when the non-matter energy momentum tensor is interpreted as a fluid or from non-equilibrium thermodynamics when an entropy production term, which depends on the time-varying Newton constant, is included. Finally, a comparison between black hole and cosmological thermodynamics in the framework of scale--dependent gravity is briefly discussed.",
-      "published": "2021-05-21T07:37:53Z",
-      "updated": "2021-05-21T07:37:53Z",
+      "title": "Generative AI for CAD Automation: Leveraging Large Language Models for 3D Modelling",
+      "summary": "Large Language Models (LLMs) are revolutionizing industries by enhancing efficiency, scalability, and innovation. This paper investigates the potential of LLMs in automating Computer-Aided Design (CAD) workflows, by integrating FreeCAD with LLM as CAD design tool. Traditional CAD processes are often complex and require specialized sketching skills, posing challenges for rapid prototyping and generative design. We propose a framework where LLMs generate initial CAD scripts from natural language descriptions, which are then executed and refined iteratively based on error feedback. Through a series of experiments with increasing complexity, we assess the effectiveness of this approach. Our findings reveal that LLMs perform well for simple to moderately complex designs but struggle with highly constrained models, necessitating multiple refinements. The study highlights the need for improved memory retrieval, adaptive prompt engineering, and hybrid AI techniques to enhance script robustness. Future directions include integrating cloud-based execution and exploring advanced LLM capabilities to further streamline CAD automation. This work underscores the transformative potential of LLMs in design workflows while identifying critical areas for future development.",
+      "published": "2025-07-05T23:30:17Z",
+      "updated": "2025-07-05T23:30:17Z",
       "authors": [
-        "Pedro Bargueno",
-        "Ernesto Contreras",
-        "Angel Rincon"
+        "Sumit Kumar",
+        "Sarthak Kapoor",
+        "Harsh Vardhan",
+        "Yao Zhao"
       ],
       "author_affiliations": [],
-      "primary_category": "gr-qc",
+      "primary_category": "cs.HC",
       "categories": [
-        "gr-qc"
+        "cs.HC",
+        "cs.AI",
+        "cs.SE"
       ],
-      "comment": "To be published in EPJC",
+      "comment": null,
       "journal_ref": null,
-      "doi": "10.1140/epjc/s10052-021-09274-7",
-      "abs_url": "https://arxiv.org/abs/2105.10178v1",
-      "pdf_url": "https://arxiv.org/pdf/2105.10178v1"
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2508.00843v1",
+      "pdf_url": "https://arxiv.org/pdf/2508.00843v1"
     }
   },
   {
@@ -816,35 +819,35 @@
     "year": 2025,
     "name": "Sparc3D",
     "category": "Feed-Forward",
-    "arxiv": "https://arxiv.org/pdf/2501.00001",
-    "github": "https://github.com/lizhihao6/Sparc3D",
+    "arxiv": "https://arxiv.org/pdf/2501.04689v1",
+    "github": "https://github.com/Stability-AI/stable-point-aware-3d",
     "arxiv_meta": {
       "found": true,
-      "requested_id": "2501.00001",
-      "entry_id": "2501.00001v1",
+      "requested_id": "2501.04689",
+      "entry_id": "2501.04689v1",
       "version": 1,
-      "title": "Mathematical modelling of flow and adsorption in a gas chromatograph",
-      "summary": "In this paper, a mathematical model is developed to describe the evolution of the concentration of compounds through a gas chromatography column. The model couples mass balances and kinetic equations for all components. Both single and multiple-component cases are considered with constant or variable velocity. Non-dimensionalisation indicates the small effect of diffusion. The system where diffusion is neglected is analysed using Laplace transforms. In the multiple-component case, it is demonstrated that the competition between the compounds is negligible and the equations may be decoupled. This reduces the problem to solving a single integral equation to determine the concentration profile for all components (since they are scaled versions of each other). For a given analyte, we then only two parameters need to be fitted to the data. To verify this approach, the full governing equations are also solved numerically using the finite difference method and a global adaptive quadrature method to integrate the Laplace transformation. Comparison with the Laplace solution verifies the high degree of accuracy of the simpler Laplace form. The Laplace solution is then verified against experimental data from BTEX chromatography. This novel method, which involves solving a single equation and fitting parameters in pairs for individual components, is highly efficient. It is significantly faster and simpler than the full numerical solution and avoids the computationally expensive methods that would normally be used to fit all curves at the same time.",
-      "published": "2024-10-07T10:45:05Z",
-      "updated": "2024-10-07T10:45:05Z",
+      "title": "SPAR3D: Stable Point-Aware Reconstruction of 3D Objects from Single Images",
+      "summary": "We study the problem of single-image 3D object reconstruction. Recent works have diverged into two directions: regression-based modeling and generative modeling. Regression methods efficiently infer visible surfaces, but struggle with occluded regions. Generative methods handle uncertain regions better by modeling distributions, but are computationally expensive and the generation is often misaligned with visible surfaces. In this paper, we present SPAR3D, a novel two-stage approach aiming to take the best of both directions. The first stage of SPAR3D generates sparse 3D point clouds using a lightweight point diffusion model, which has a fast sampling speed. The second stage uses both the sampled point cloud and the input image to create highly detailed meshes. Our two-stage design enables probabilistic modeling of the ill-posed single-image 3D task while maintaining high computational efficiency and great output fidelity. Using point clouds as an intermediate representation further allows for interactive user edits. Evaluated on diverse datasets, SPAR3D demonstrates superior performance over previous state-of-the-art methods, at an inference speed of 0.7 seconds. Project page with code and model: https://spar3d.github.io",
+      "published": "2025-01-08T18:52:03Z",
+      "updated": "2025-01-08T18:52:03Z",
       "authors": [
-        "A. Cabrera-Codony",
-        "A. Valverde",
-        "K. Born",
-        "O. A. I. Noreldin",
-        "T. G. Myers"
+        "Zixuan Huang",
+        "Mark Boss",
+        "Aaryaman Vasishta",
+        "James M. Rehg",
+        "Varun Jampani"
       ],
       "author_affiliations": [],
-      "primary_category": "cs.CE",
+      "primary_category": "cs.CV",
       "categories": [
-        "cs.CE",
-        "physics.chem-ph"
+        "cs.CV",
+        "cs.GR"
       ],
-      "comment": "35 pages, 4 figures, 3 tables, 2 appendix, 37 references. Submitted to Partial Differential Equations in Applied Mathematics",
+      "comment": null,
       "journal_ref": null,
       "doi": null,
-      "abs_url": "https://arxiv.org/abs/2501.00001v1",
-      "pdf_url": "https://arxiv.org/pdf/2501.00001v1"
+      "abs_url": "https://arxiv.org/abs/2501.04689v1",
+      "pdf_url": "https://arxiv.org/pdf/2501.04689v1"
     }
   },
   {
@@ -921,34 +924,42 @@
   },
   {
     "year": 2024,
-    "name": "Rodin Gen-2",
+    "name": "Rodin",
     "category": "Feed-Forward",
-    "arxiv": "https://arxiv.org/pdf/2412.15039",
-    "github": "https://github.com/DeemosTech/rodin3d-skills",
+    "arxiv": "https://arxiv.org/pdf/2212.06135",
+    "github": "",
     "arxiv_meta": {
       "found": true,
-      "requested_id": "2412.15039",
-      "entry_id": "2412.15039v2",
-      "version": 2,
-      "title": "The hypergraph removal process",
-      "summary": "Let $k\\geq 2$ and fix a $k$-uniform hypergraph $\\mathcal{F}$. Consider the random process that, starting from a $k$-uniform hypergraph $\\mathcal{H}$ on $n$ vertices, repeatedly deletes the edges of a copy of $\\mathcal{F}$ chosen uniformly at random and terminates when no copies of $\\mathcal{F}$ remain. Let $R(\\mathcal{H},\\mathcal{F})$ denote the number of edges that are left after termination. We show that $R(\\mathcal{H},\\mathcal{F})=n^{k-1/\u03c1\\pm o(1)}$, where $\u03c1:=(\\lvert E(\\mathcal{F})\\rvert-1)/(\\lvert V(\\mathcal{F})\\rvert -k)$, holds with high probability provided that $\\mathcal{F}$ is strictly $k$-balanced and $\\mathcal{H}$ is sufficiently dense with pseudorandom properties. Since we may in particular choose $\\mathcal{F}$ and $\\mathcal{H}$ to be complete graphs, this confirms the major folklore conjecture in the area in a very strong form.",
-      "published": "2024-12-19T16:50:52Z",
-      "updated": "2025-08-03T00:27:58Z",
+      "requested_id": "2212.06135",
+      "entry_id": "2212.06135v1",
+      "version": 1,
+      "title": "Rodin: A Generative Model for Sculpting 3D Digital Avatars Using Diffusion",
+      "summary": "This paper presents a 3D generative model that uses diffusion models to automatically generate 3D digital avatars represented as neural radiance fields. A significant challenge in generating such avatars is that the memory and processing costs in 3D are prohibitive for producing the rich details required for high-quality avatars. To tackle this problem we propose the roll-out diffusion network (Rodin), which represents a neural radiance field as multiple 2D feature maps and rolls out these maps into a single 2D feature plane within which we perform 3D-aware diffusion. The Rodin model brings the much-needed computational efficiency while preserving the integrity of diffusion in 3D by using 3D-aware convolution that attends to projected features in the 2D feature plane according to their original relationship in 3D. We also use latent conditioning to orchestrate the feature generation for global coherence, leading to high-fidelity avatars and enabling their semantic editing based on text prompts. Finally, we use hierarchical synthesis to further enhance details. The 3D avatars generated by our model compare favorably with those produced by existing generative techniques. We can generate highly detailed avatars with realistic hairstyles and facial hair like beards. We also demonstrate 3D avatar generation from image or text as well as text-guided editability.",
+      "published": "2022-12-12T18:59:40Z",
+      "updated": "2022-12-12T18:59:40Z",
       "authors": [
-        "Felix Joos",
-        "Marcus K\u00fchn"
+        "Tengfei Wang",
+        "Bo Zhang",
+        "Ting Zhang",
+        "Shuyang Gu",
+        "Jianmin Bao",
+        "Tadas Baltrusaitis",
+        "Jingjing Shen",
+        "Dong Chen",
+        "Fang Wen",
+        "Qifeng Chen",
+        "Baining Guo"
       ],
       "author_affiliations": [],
-      "primary_category": "math.CO",
+      "primary_category": "cs.CV",
       "categories": [
-        "math.CO",
-        "math.PR"
+        "cs.CV"
       ],
-      "comment": "66 pages + 21 pages appendix; typos corrected",
+      "comment": "Project Webpage: https://3d-avatar-diffusion.microsoft.com/",
       "journal_ref": null,
       "doi": null,
-      "abs_url": "https://arxiv.org/abs/2412.15039v2",
-      "pdf_url": "https://arxiv.org/pdf/2412.15039v2"
+      "abs_url": "https://arxiv.org/abs/2212.06135v1",
+      "pdf_url": "https://arxiv.org/pdf/2212.06135v1"
     }
   },
   {
@@ -1024,61 +1035,6 @@
       "doi": null,
       "abs_url": "https://arxiv.org/abs/2403.12008v1",
       "pdf_url": "https://arxiv.org/pdf/2403.12008v1"
-    }
-  },
-  {
-    "year": 2024,
-    "name": "NeuralBRep",
-    "category": "Procedural",
-    "arxiv": "https://arxiv.org/pdf/2410.05123",
-    "github": "",
-    "arxiv_meta": {
-      "found": true,
-      "requested_id": "2410.05123",
-      "entry_id": "2410.05123v1",
-      "version": 1,
-      "title": "Upgrading SPHERE with the second stage AO system SAXO+: frequency-based data-driven controller for adaptive optics",
-      "summary": "This study introduces a novel frequency-based data-driven controller for adaptive optics, using power spectral density for optimization while ensuring stability criteria. It addresses disturbance rejection, command amplitude constraints and system transfer functions through convex optimization to obtain an optimal control in an infinite input response filter form. Evaluated within the SAXO+ project, it demonstrates efficacy under diverse atmospheric conditions and operational scenarios. The proposed controller is tested in both standard and disentangled adaptive optics schemes, showcasing its adaptability and performance. Experimental validation is conducted using the COMPASS simulation tool, affirming the controller's promise for enhancing adaptive optics systems in real-world applications.",
-      "published": "2024-10-07T15:24:18Z",
-      "updated": "2024-10-07T15:24:18Z",
-      "authors": [
-        "Isaac Dinis",
-        "Fran\u00e7ois Wildi",
-        "Damien S\u00e9gransan",
-        "Vaibhav Gupta",
-        "Alireza Karimi",
-        "Michel Tallon",
-        "Isabelle Bosc",
-        "Maud Langlois",
-        "Magali Loupias",
-        "Cl\u00e9mentine Bechet",
-        "Eric Thi\u00e9baut",
-        "Charles Goulas",
-        "Florian Ferreira",
-        "Anthony Boccaletti",
-        "Fabrice Vidal",
-        "Caroline Kulcsar",
-        "Henri-Fran\u00e7ois Raynaud",
-        "Nicolas Galland",
-        "Markus Kasper",
-        "Julien Milli",
-        "David Mouillet",
-        "Laura Schreiber",
-        "Emiliano Diolaiti",
-        "Raffaele Gratton",
-        "Gael Chauvin"
-      ],
-      "author_affiliations": [],
-      "primary_category": "eess.SY",
-      "categories": [
-        "eess.SY",
-        "astro-ph.IM"
-      ],
-      "comment": null,
-      "journal_ref": null,
-      "doi": "10.1117/12.3020179",
-      "abs_url": "https://arxiv.org/abs/2410.05123v1",
-      "pdf_url": "https://arxiv.org/pdf/2410.05123v1"
     }
   },
   {
@@ -1238,31 +1194,39 @@
     "year": 2024,
     "name": "MeshAnything V2",
     "category": "Feed-Forward",
-    "arxiv": "https://arxiv.org/pdf/2408.03211",
+    "arxiv": "https://arxiv.org/pdf/2408.02555",
     "github": "https://github.com/buaacyw/MeshAnythingV2",
     "arxiv_meta": {
       "found": true,
-      "requested_id": "2408.03211",
-      "entry_id": "2408.03211v1",
-      "version": 1,
-      "title": "Boundedness of New Type Fourier Integral Operators with Product Structure",
-      "summary": "We investigate a class of Fourier integral operators with weakened symbols, which satisfy a multi-parameter differential inequality in $\\R^n$. We establish that these operators retain the classical $L^p$ boundedness and the $H^1$ to $L^1$ boundedness. Notably, the Hardy space considered here is the traditional single-parameter Hardy space rather than a product Hardy space.",
-      "published": "2024-08-06T14:17:46Z",
-      "updated": "2024-08-06T14:17:46Z",
+      "requested_id": "2408.02555",
+      "entry_id": "2408.02555v3",
+      "version": 3,
+      "title": "MeshAnything V2: Artist-Created Mesh Generation With Adjacent Mesh Tokenization",
+      "summary": "Meshes are the de facto 3D representation in the industry but are labor-intensive to produce. Recently, a line of research has focused on autoregressively generating meshes. This approach processes meshes into a sequence composed of vertices and then generates them vertex by vertex, similar to how a language model generates text. These methods have achieved some success but still struggle to generate complex meshes. One primary reason for this limitation is their inefficient tokenization methods. To address this issue, we introduce MeshAnything V2, an advanced mesh generation model designed to create Artist-Created Meshes that align precisely with specified shapes. A key innovation behind MeshAnything V2 is our novel Adjacent Mesh Tokenization (AMT) method. Unlike traditional approaches that represent each face using three vertices, AMT optimizes this by employing a single vertex wherever feasible, effectively reducing the token sequence length by about half on average. This not only streamlines the tokenization process but also results in more compact and well-structured sequences, enhancing the efficiency of mesh generation. With these improvements, MeshAnything V2 effectively doubles the face limit compared to previous models, delivering superior performance without increasing computational costs. We will make our code and models publicly available. Project Page: https://buaacyw.github.io/meshanything-v2/",
+      "published": "2024-08-05T15:33:45Z",
+      "updated": "2024-12-01T14:34:01Z",
       "authors": [
-        "Chaoqiang Tan",
-        "Zipeng Wang"
+        "Yiwen Chen",
+        "Yikai Wang",
+        "Yihao Luo",
+        "Zhengyi Wang",
+        "Zilong Chen",
+        "Jun Zhu",
+        "Chi Zhang",
+        "Guosheng Lin"
       ],
       "author_affiliations": [],
-      "primary_category": "math.FA",
+      "primary_category": "cs.CV",
       "categories": [
-        "math.FA"
+        "cs.CV",
+        "cs.AI",
+        "cs.GR"
       ],
-      "comment": null,
+      "comment": "Project Page: https://buaacyw.github.io/meshanything-v2/ Github: https://github.com/buaacyw/MeshAnythingV2",
       "journal_ref": null,
       "doi": null,
-      "abs_url": "https://arxiv.org/abs/2408.03211v1",
-      "pdf_url": "https://arxiv.org/pdf/2408.03211v1"
+      "abs_url": "https://arxiv.org/abs/2408.02555v3",
+      "pdf_url": "https://arxiv.org/pdf/2408.02555v3"
     }
   },
   {
@@ -1427,37 +1391,6 @@
       "doi": null,
       "abs_url": "https://arxiv.org/abs/2503.13439v1",
       "pdf_url": "https://arxiv.org/pdf/2503.13439v1"
-    }
-  },
-  {
-    "year": 2023,
-    "name": "Rodin (Avatar)",
-    "category": "Feed-Forward",
-    "arxiv": "https://arxiv.org/pdf/2312.11432",
-    "github": "",
-    "arxiv_meta": {
-      "found": true,
-      "requested_id": "2312.11432",
-      "entry_id": "2312.11432v2",
-      "version": 2,
-      "title": "Fast multicomponent cat-state generation under resonant or strong-dressing Rydberg-Kerr interaction",
-      "summary": "Cat states are maximally entangled states with applications in metrology and fault-tolerant quantum computation. The experiments have revealed that Rydberg collective avalanche decoherence acts as the bottleneck for cat creation with Rydberg atoms. This process initiates after the black body radiation (BBR-)induced decay of Rydberg atoms and sets a strong limit on the cat creation time. These findings necessitate the exploration of new ideas to accelerate current Rydberg cat schemes. To enhance the interaction-to-loss ratio, this paper delves into cat state formation in the strong Rydberg dressing regime, uncovering the emergence of cat states despite the presence of complex orders of nonlinearities. This unexplored regime demonstrates the potential for rapid cat state formation, particularly beneficial for operation in typical 2D lattices in Rydberg Labs. In an extreme case, this article demonstrates that second-order nonlinearity could be isolated under resonant Rydberg driving if a large number of atoms are accommodated inside the blockade volume. The resonant model significantly enhances the interaction-to-loss ratio while circumventing the adiabaticity condition, allowing fast switching of lasers. In addition, the paper presents a method for generating multi-component cat states, which are superpositions of $m$ coherent spin states ($|m-\\text{CSS}\\rangle$). The maximum value of $m$ is determined by the number of atoms within the blockade radius, where $m=\\sqrt{N}$. The states with larger $m$ are more robust against the presence of multiple orders of nonlinearity in the strong dressing Hamiltonian and are accessible in a much shorter time compared to traditional 2-component cat states.",
-      "published": "2023-12-18T18:34:50Z",
-      "updated": "2024-09-26T08:09:27Z",
-      "authors": [
-        "Mohammadsadegh Khazali"
-      ],
-      "author_affiliations": [],
-      "primary_category": "quant-ph",
-      "categories": [
-        "quant-ph",
-        "physics.atom-ph"
-      ],
-      "comment": null,
-      "journal_ref": "Physical Review A 109.5 (2024): 053716",
-      "doi": "10.1103/PhysRevA.109.053716",
-      "abs_url": "https://arxiv.org/abs/2312.11432v2",
-      "pdf_url": "https://arxiv.org/pdf/2312.11432v2"
     }
   },
   {
