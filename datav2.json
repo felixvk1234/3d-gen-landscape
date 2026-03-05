@@ -1538,5 +1538,527 @@
       "abs_url": "https://arxiv.org/abs/2412.17808v3",
       "pdf_url": "https://arxiv.org/pdf/2412.17808v3"
     }
+  },
+  {
+    "year": 2020,
+    "name": "NeRF",
+    "category": "Foundations",
+    "arxiv": "https://arxiv.org/pdf/2003.08934",
+    "github": "https://github.com/bmild/nerf",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2003.08934",
+      "entry_id": "2003.08934v2",
+      "version": 2,
+      "title": "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis",
+      "summary": "We present a method that achieves state-of-the-art results for synthesizing novel views of complex scenes by optimizing an underlying continuous volumetric scene function using a sparse set of input views. Our algorithm represents a scene using a fully-connected (non-convolutional) deep network, whose input is a single continuous 5D coordinate (spatial location $(x,y,z)$ and viewing direction $(\u03b8, \u03c6)$) and whose output is the volume density and view-dependent emitted radiance at that spatial location. We synthesize views by querying 5D coordinates along camera rays and use classic volume rendering techniques to project the output colors and densities into an image. Because volume rendering is naturally differentiable, the only input required to optimize our representation is a set of images with known camera poses. We describe how to effectively optimize neural radiance fields to render photorealistic novel views of scenes with complicated geometry and appearance, and demonstrate results that outperform prior work on neural rendering and view synthesis. View synthesis results are best viewed as videos, so we urge readers to view our supplementary video for convincing comparisons.",
+      "published": "2020-03-19T17:57:23Z",
+      "updated": "2020-08-03T22:17:31Z",
+      "authors": [
+        "Ben Mildenhall",
+        "Pratul P. Srinivasan",
+        "Matthew Tancik",
+        "Jonathan T. Barron",
+        "Ravi Ramamoorthi",
+        "Ren Ng"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ],
+      "comment": "ECCV 2020 (oral). Project page with videos and code: http://tancik.com/nerf",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2003.08934v2",
+      "pdf_url": "https://arxiv.org/pdf/2003.08934v2"
+    }
+  },
+  {
+    "year": 2023,
+    "name": "3D Gaussian Splatting",
+    "category": "Foundations",
+    "arxiv": "https://arxiv.org/pdf/2308.04079",
+    "github": "https://github.com/graphdeco-inria/gaussian-splatting",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2308.04079",
+      "entry_id": "2308.04079v1",
+      "version": 1,
+      "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+      "summary": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos. However, achieving high visual quality still requires neural networks that are costly to train and render, while recent faster methods inevitably trade off speed for quality. For unbounded and complete scenes (rather than isolated objects) and 1080p resolution rendering, no current method can achieve real-time display rates. We introduce three key elements that allow us to achieve state-of-the-art visual quality while maintaining competitive training times and importantly allow high-quality real-time (>= 30 fps) novel-view synthesis at 1080p resolution. First, starting from sparse points produced during camera calibration, we represent the scene with 3D Gaussians that preserve desirable properties of continuous volumetric radiance fields for scene optimization while avoiding unnecessary computation in empty space; Second, we perform interleaved optimization/density control of the 3D Gaussians, notably optimizing anisotropic covariance to achieve an accurate representation of the scene; Third, we develop a fast visibility-aware rendering algorithm that supports anisotropic splatting and both accelerates training and allows realtime rendering. We demonstrate state-of-the-art visual quality and real-time rendering on several established datasets.",
+      "published": "2023-08-08T06:37:06Z",
+      "updated": "2023-08-08T06:37:06Z",
+      "authors": [
+        "Bernhard Kerbl",
+        "Georgios Kopanas",
+        "Thomas Leimk\u00fchler",
+        "George Drettakis"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.GR",
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "comment": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+      "journal_ref": "ACM Transactions on Graphics, volume 42(4), July 2023",
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2308.04079v1",
+      "pdf_url": "https://arxiv.org/pdf/2308.04079v1"
+    }
+  },
+  {
+    "year": 2022,
+    "name": "EG3D",
+    "category": "Generative",
+    "arxiv": "https://arxiv.org/pdf/2112.07945",
+    "github": "https://github.com/NVlabs/eg3d",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2112.07945",
+      "entry_id": "2112.07945v2",
+      "version": 2,
+      "title": "Efficient Geometry-aware 3D Generative Adversarial Networks",
+      "summary": "Unsupervised generation of high-quality multi-view-consistent images and 3D shapes using only collections of single-view 2D photographs has been a long-standing challenge. Existing 3D GANs are either compute-intensive or make approximations that are not 3D-consistent; the former limits quality and resolution of the generated images and the latter adversely affects multi-view consistency and shape quality. In this work, we improve the computational efficiency and image quality of 3D GANs without overly relying on these approximations. We introduce an expressive hybrid explicit-implicit network architecture that, together with other design choices, synthesizes not only high-resolution multi-view-consistent images in real time but also produces high-quality 3D geometry. By decoupling feature generation and neural rendering, our framework is able to leverage state-of-the-art 2D CNN generators, such as StyleGAN2, and inherit their efficiency and expressiveness. We demonstrate state-of-the-art 3D-aware synthesis with FFHQ and AFHQ Cats, among other experiments.",
+      "published": "2021-12-15T08:01:43Z",
+      "updated": "2022-04-27T18:25:14Z",
+      "authors": [
+        "Eric R. Chan",
+        "Connor Z. Lin",
+        "Matthew A. Chan",
+        "Koki Nagano",
+        "Boxiao Pan",
+        "Shalini De Mello",
+        "Orazio Gallo",
+        "Leonidas Guibas",
+        "Jonathan Tremblay",
+        "Sameh Khamis",
+        "Tero Karras",
+        "Gordon Wetzstein"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.GR",
+        "cs.LG"
+      ],
+      "comment": "Project page: https://matthew-a-chan.github.io/EG3D",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2112.07945v2",
+      "pdf_url": "https://arxiv.org/pdf/2112.07945v2"
+    }
+  },
+  {
+    "year": 2022,
+    "name": "GET3D",
+    "category": "Generative",
+    "arxiv": "https://arxiv.org/pdf/2209.11163",
+    "github": "https://github.com/nv-tlabs/GET3D",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2209.11163",
+      "entry_id": "2209.11163v1",
+      "version": 1,
+      "title": "GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images",
+      "summary": "As several industries are moving towards modeling massive 3D virtual worlds, the need for content creation tools that can scale in terms of the quantity, quality, and diversity of 3D content is becoming evident. In our work, we aim to train performant 3D generative models that synthesize textured meshes which can be directly consumed by 3D rendering engines, thus immediately usable in downstream applications. Prior works on 3D generative modeling either lack geometric details, are limited in the mesh topology they can produce, typically do not support textures, or utilize neural renderers in the synthesis process, which makes their use in common 3D software non-trivial. In this work, we introduce GET3D, a Generative model that directly generates Explicit Textured 3D meshes with complex topology, rich geometric details, and high-fidelity textures. We bridge recent success in the differentiable surface modeling, differentiable rendering as well as 2D Generative Adversarial Networks to train our model from 2D image collections. GET3D is able to generate high-quality 3D textured meshes, ranging from cars, chairs, animals, motorbikes and human characters to buildings, achieving significant improvements over previous methods.",
+      "published": "2022-09-22T17:16:19Z",
+      "updated": "2022-09-22T17:16:19Z",
+      "authors": [
+        "Jun Gao",
+        "Tianchang Shen",
+        "Zian Wang",
+        "Wenzheng Chen",
+        "Kangxue Yin",
+        "Daiqing Li",
+        "Or Litany",
+        "Zan Gojcic",
+        "Sanja Fidler"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "comment": "NeurIPS 2022, Project Page: https://nv-tlabs.github.io/GET3D/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2209.11163v1",
+      "pdf_url": "https://arxiv.org/pdf/2209.11163v1"
+    }
+  },
+  {
+    "year": 2023,
+    "name": "Fantasia3D",
+    "category": "Optimization",
+    "arxiv": "https://arxiv.org/abs/2303.13873",
+    "github": "https://github.com/Gorilla-Lab-SCUT/Fantasia3D",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2303.13873",
+      "entry_id": "2303.13873v3",
+      "version": 3,
+      "title": "Fantasia3D: Disentangling Geometry and Appearance for High-quality Text-to-3D Content Creation",
+      "summary": "Automatic 3D content creation has achieved rapid progress recently due to the availability of pre-trained, large language models and image diffusion models, forming the emerging topic of text-to-3D content creation. Existing text-to-3D methods commonly use implicit scene representations, which couple the geometry and appearance via volume rendering and are suboptimal in terms of recovering finer geometries and achieving photorealistic rendering; consequently, they are less effective for generating high-quality 3D assets. In this work, we propose a new method of Fantasia3D for high-quality text-to-3D content creation. Key to Fantasia3D is the disentangled modeling and learning of geometry and appearance. For geometry learning, we rely on a hybrid scene representation, and propose to encode surface normal extracted from the representation as the input of the image diffusion model. For appearance modeling, we introduce the spatially varying bidirectional reflectance distribution function (BRDF) into the text-to-3D task, and learn the surface material for photorealistic rendering of the generated surface. Our disentangled framework is more compatible with popular graphics engines, supporting relighting, editing, and physical simulation of the generated 3D assets. We conduct thorough experiments that show the advantages of our method over existing ones under different text-to-3D task settings. Project page and source codes: https://fantasia3d.github.io/.",
+      "published": "2023-03-24T09:30:09Z",
+      "updated": "2023-09-27T10:35:49Z",
+      "authors": [
+        "Rui Chen",
+        "Yongwei Chen",
+        "Ningxin Jiao",
+        "Kui Jia"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "comment": "Accepted by ICCV 2023. Project page: https://fantasia3d.github.io/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2303.13873v3",
+      "pdf_url": "https://arxiv.org/pdf/2303.13873v3"
+    }
+  },
+  {
+    "year": 2023,
+    "name": "DreamCraft3D",
+    "category": "Optimization",
+    "arxiv": "https://arxiv.org/pdf/2310.16818",
+    "github": "https://github.com/deepseek-ai/DreamCraft3D",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2310.16818",
+      "entry_id": "2310.16818v2",
+      "version": 2,
+      "title": "DreamCraft3D: Hierarchical 3D Generation with Bootstrapped Diffusion Prior",
+      "summary": "We present DreamCraft3D, a hierarchical 3D content generation method that produces high-fidelity and coherent 3D objects. We tackle the problem by leveraging a 2D reference image to guide the stages of geometry sculpting and texture boosting. A central focus of this work is to address the consistency issue that existing works encounter. To sculpt geometries that render coherently, we perform score distillation sampling via a view-dependent diffusion model. This 3D prior, alongside several training strategies, prioritizes the geometry consistency but compromises the texture fidelity. We further propose Bootstrapped Score Distillation to specifically boost the texture. We train a personalized diffusion model, Dreambooth, on the augmented renderings of the scene, imbuing it with 3D knowledge of the scene being optimized. The score distillation from this 3D-aware diffusion prior provides view-consistent guidance for the scene. Notably, through an alternating optimization of the diffusion prior and 3D scene representation, we achieve mutually reinforcing improvements: the optimized 3D scene aids in training the scene-specific diffusion model, which offers increasingly view-consistent guidance for 3D optimization. The optimization is thus bootstrapped and leads to substantial texture boosting. With tailored 3D priors throughout the hierarchical generation, DreamCraft3D generates coherent 3D objects with photorealistic renderings, advancing the state-of-the-art in 3D content generation. Code available at https://github.com/deepseek-ai/DreamCraft3D.",
+      "published": "2023-10-25T17:50:10Z",
+      "updated": "2023-10-26T06:54:22Z",
+      "authors": [
+        "Jingxiang Sun",
+        "Bo Zhang",
+        "Ruizhi Shao",
+        "Lizhen Wang",
+        "Wen Liu",
+        "Zhenda Xie",
+        "Yebin Liu"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.CG"
+      ],
+      "comment": "Project Page: https://mrtornado24.github.io/DreamCraft3D/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2310.16818v2",
+      "pdf_url": "https://arxiv.org/pdf/2310.16818v2"
+    }
+  },
+  {
+    "year": 2023,
+    "name": "TextMesh",
+    "category": "Optimization",
+    "arxiv": "https://arxiv.org/pdf/2304.12439",
+    "github": "",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2304.12439",
+      "entry_id": "2304.12439v1",
+      "version": 1,
+      "title": "TextMesh: Generation of Realistic 3D Meshes From Text Prompts",
+      "summary": "The ability to generate highly realistic 2D images from mere text prompts has recently made huge progress in terms of speed and quality, thanks to the advent of image diffusion models. Naturally, the question arises if this can be also achieved in the generation of 3D content from such text prompts. To this end, a new line of methods recently emerged trying to harness diffusion models, trained on 2D images, for supervision of 3D model generation using view dependent prompts. While achieving impressive results, these methods, however, have two major drawbacks. First, rather than commonly used 3D meshes, they instead generate neural radiance fields (NeRFs), making them impractical for most real applications. Second, these approaches tend to produce over-saturated models, giving the output a cartoonish looking effect. Therefore, in this work we propose a novel method for generation of highly realistic-looking 3D meshes. To this end, we extend NeRF to employ an SDF backbone, leading to improved 3D mesh extraction. In addition, we propose a novel way to finetune the mesh texture, removing the effect of high saturation and improving the details of the output 3D mesh.",
+      "published": "2023-04-24T20:29:41Z",
+      "updated": "2023-04-24T20:29:41Z",
+      "authors": [
+        "Christina Tsalicoglou",
+        "Fabian Manhardt",
+        "Alessio Tonioni",
+        "Michael Niemeyer",
+        "Federico Tombari"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "comment": "Project Website: https://fabi92.github.io/textmesh/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2304.12439v1",
+      "pdf_url": "https://arxiv.org/pdf/2304.12439v1"
+    }
+  },
+  {
+    "year": 2023,
+    "name": "SweetDreamer",
+    "category": "Optimization",
+    "arxiv": "https://arxiv.org/pdf/2310.02596",
+    "github": "https://github.com/wyysf-98/SweetDreamer",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2310.02596",
+      "entry_id": "2310.02596v2",
+      "version": 2,
+      "title": "SweetDreamer: Aligning Geometric Priors in 2D Diffusion for Consistent Text-to-3D",
+      "summary": "It is inherently ambiguous to lift 2D results from pre-trained diffusion models to a 3D world for text-to-3D generation. 2D diffusion models solely learn view-agnostic priors and thus lack 3D knowledge during the lifting, leading to the multi-view inconsistency problem. We find that this problem primarily stems from geometric inconsistency, and avoiding misplaced geometric structures substantially mitigates the problem in the final outputs. Therefore, we improve the consistency by aligning the 2D geometric priors in diffusion models with well-defined 3D shapes during the lifting, addressing the vast majority of the problem. This is achieved by fine-tuning the 2D diffusion model to be viewpoint-aware and to produce view-specific coordinate maps of canonically oriented 3D objects. In our process, only coarse 3D information is used for aligning. This \"coarse\" alignment not only resolves the multi-view inconsistency in geometries but also retains the ability in 2D diffusion models to generate detailed and diversified high-quality objects unseen in the 3D datasets. Furthermore, our aligned geometric priors (AGP) are generic and can be seamlessly integrated into various state-of-the-art pipelines, obtaining high generalizability in terms of unseen shapes and visual appearance while greatly alleviating the multi-view inconsistency problem. Our method represents a new state-of-the-art performance with an 85+% consistency rate by human evaluation, while many previous methods are around 30%. Our project page is https://sweetdreamer3d.github.io/",
+      "published": "2023-10-04T05:59:50Z",
+      "updated": "2023-10-20T04:02:22Z",
+      "authors": [
+        "Weiyu Li",
+        "Rui Chen",
+        "Xuelin Chen",
+        "Ping Tan"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "comment": "Project page: https://sweetdreamer3d.github.io/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2310.02596v2",
+      "pdf_url": "https://arxiv.org/pdf/2310.02596v2"
+    }
+  },
+  {
+    "year": 2024,
+    "name": "GaussianDreamer",
+    "category": "Optimization",
+    "arxiv": "https://arxiv.org/pdf/2310.08529",
+    "github": "https://github.com/hustvl/GaussianDreamer",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2310.08529",
+      "entry_id": "2310.08529v3",
+      "version": 3,
+      "title": "GaussianDreamer: Fast Generation from Text to 3D Gaussians by Bridging 2D and 3D Diffusion Models",
+      "summary": "In recent times, the generation of 3D assets from text prompts has shown impressive results. Both 2D and 3D diffusion models can help generate decent 3D objects based on prompts. 3D diffusion models have good 3D consistency, but their quality and generalization are limited as trainable 3D data is expensive and hard to obtain. 2D diffusion models enjoy strong abilities of generalization and fine generation, but 3D consistency is hard to guarantee. This paper attempts to bridge the power from the two types of diffusion models via the recent explicit and efficient 3D Gaussian splatting representation. A fast 3D object generation framework, named as GaussianDreamer, is proposed, where the 3D diffusion model provides priors for initialization and the 2D diffusion model enriches the geometry and appearance. Operations of noisy point growing and color perturbation are introduced to enhance the initialized Gaussians. Our GaussianDreamer can generate a high-quality 3D instance or 3D avatar within 15 minutes on one GPU, much faster than previous methods, while the generated instances can be directly rendered in real time. Demos and code are available at https://taoranyi.com/gaussiandreamer/.",
+      "published": "2023-10-12T17:22:24Z",
+      "updated": "2024-05-13T14:12:23Z",
+      "authors": [
+        "Taoran Yi",
+        "Jiemin Fang",
+        "Junjie Wang",
+        "Guanjun Wu",
+        "Lingxi Xie",
+        "Xiaopeng Zhang",
+        "Wenyu Liu",
+        "Qi Tian",
+        "Xinggang Wang"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ],
+      "comment": "CVPR 2024, Project page: https://taoranyi.com/gaussiandreamer/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2310.08529v3",
+      "pdf_url": "https://arxiv.org/pdf/2310.08529v3"
+    }
+  },
+  {
+    "year": 2024,
+    "name": "MeshGPT",
+    "category": "Feed-Forward",
+    "arxiv": "https://arxiv.org/pdf/2311.15475",
+    "github": "https://github.com/nihalsid/mesh-gpt",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2311.15475",
+      "entry_id": "2311.15475v1",
+      "version": 1,
+      "title": "MeshGPT: Generating Triangle Meshes with Decoder-Only Transformers",
+      "summary": "We introduce MeshGPT, a new approach for generating triangle meshes that reflects the compactness typical of artist-created meshes, in contrast to dense triangle meshes extracted by iso-surfacing methods from neural fields. Inspired by recent advances in powerful large language models, we adopt a sequence-based approach to autoregressively generate triangle meshes as sequences of triangles. We first learn a vocabulary of latent quantized embeddings, using graph convolutions, which inform these embeddings of the local mesh geometry and topology. These embeddings are sequenced and decoded into triangles by a decoder, ensuring that they can effectively reconstruct the mesh. A transformer is then trained on this learned vocabulary to predict the index of the next embedding given previous embeddings. Once trained, our model can be autoregressively sampled to generate new triangle meshes, directly generating compact meshes with sharp edges, more closely imitating the efficient triangulation patterns of human-crafted meshes. MeshGPT demonstrates a notable improvement over state of the art mesh generation methods, with a 9% increase in shape coverage and a 30-point enhancement in FID scores across various categories.",
+      "published": "2023-11-27T01:20:11Z",
+      "updated": "2023-11-27T01:20:11Z",
+      "authors": [
+        "Yawar Siddiqui",
+        "Antonio Alliegro",
+        "Alexey Artemov",
+        "Tatiana Tommasi",
+        "Daniele Sirigatti",
+        "Vladislav Rosov",
+        "Angela Dai",
+        "Matthias Nie\u00dfner"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "comment": "Project Page: https://nihalsid.github.io/mesh-gpt/, Video: https://youtu.be/UV90O1_69_o",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2311.15475v1",
+      "pdf_url": "https://arxiv.org/pdf/2311.15475v1"
+    }
+  },
+  {
+    "year": 2023,
+    "name": "Zero123++",
+    "category": "Generative",
+    "arxiv": "https://arxiv.org/pdf/2310.15110",
+    "github": "https://github.com/SUDO-AI-3D/zero123plus",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2310.15110",
+      "entry_id": "2310.15110v1",
+      "version": 1,
+      "title": "Zero123++: a Single Image to Consistent Multi-view Diffusion Base Model",
+      "summary": "We report Zero123++, an image-conditioned diffusion model for generating 3D-consistent multi-view images from a single input view. To take full advantage of pretrained 2D generative priors, we develop various conditioning and training schemes to minimize the effort of finetuning from off-the-shelf image diffusion models such as Stable Diffusion. Zero123++ excels in producing high-quality, consistent multi-view images from a single image, overcoming common issues like texture degradation and geometric misalignment. Furthermore, we showcase the feasibility of training a ControlNet on Zero123++ for enhanced control over the generation process. The code is available at https://github.com/SUDO-AI-3D/zero123plus.",
+      "published": "2023-10-23T17:18:59Z",
+      "updated": "2023-10-23T17:18:59Z",
+      "authors": [
+        "Ruoxi Shi",
+        "Hansheng Chen",
+        "Zhuoyang Zhang",
+        "Minghua Liu",
+        "Chao Xu",
+        "Xinyue Wei",
+        "Linghao Chen",
+        "Chong Zeng",
+        "Hao Su"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ],
+      "comment": null,
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2310.15110v1",
+      "pdf_url": "https://arxiv.org/pdf/2310.15110v1"
+    }
+  },
+  {
+    "year": 2023,
+    "name": "SyncDreamer",
+    "category": "Generative",
+    "arxiv": "https://arxiv.org/pdf/2309.03453",
+    "github": "https://github.com/liuyuan-pal/SyncDreamer",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2309.03453",
+      "entry_id": "2309.03453v2",
+      "version": 2,
+      "title": "SyncDreamer: Generating Multiview-consistent Images from a Single-view Image",
+      "summary": "In this paper, we present a novel diffusion model called that generates multiview-consistent images from a single-view image. Using pretrained large-scale 2D diffusion models, recent work Zero123 demonstrates the ability to generate plausible novel views from a single-view image of an object. However, maintaining consistency in geometry and colors for the generated images remains a challenge. To address this issue, we propose a synchronized multiview diffusion model that models the joint probability distribution of multiview images, enabling the generation of multiview-consistent images in a single reverse process. SyncDreamer synchronizes the intermediate states of all the generated images at every step of the reverse process through a 3D-aware feature attention mechanism that correlates the corresponding features across different views. Experiments show that SyncDreamer generates images with high consistency across different views, thus making it well-suited for various 3D generation tasks such as novel-view-synthesis, text-to-3D, and image-to-3D.",
+      "published": "2023-09-07T02:28:04Z",
+      "updated": "2024-04-15T10:28:44Z",
+      "authors": [
+        "Yuan Liu",
+        "Cheng Lin",
+        "Zijiao Zeng",
+        "Xiaoxiao Long",
+        "Lingjie Liu",
+        "Taku Komura",
+        "Wenping Wang"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.GR"
+      ],
+      "comment": "ICLR 2024 Spotlight. Project page: https://liuyuan-pal.github.io/SyncDreamer/ Code: https://github.com/liuyuan-pal/SyncDreamer",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2309.03453v2",
+      "pdf_url": "https://arxiv.org/pdf/2309.03453v2"
+    }
+  },
+  {
+    "year": 2024,
+    "name": "Wonder3D",
+    "category": "Feed-Forward",
+    "arxiv": "https://arxiv.org/pdf/2310.15008",
+    "github": "https://github.com/xxlong0/Wonder3D",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2310.15008",
+      "entry_id": "2310.15008v3",
+      "version": 3,
+      "title": "Wonder3D: Single Image to 3D using Cross-Domain Diffusion",
+      "summary": "In this work, we introduce Wonder3D, a novel method for efficiently generating high-fidelity textured meshes from single-view images.Recent methods based on Score Distillation Sampling (SDS) have shown the potential to recover 3D geometry from 2D diffusion priors, but they typically suffer from time-consuming per-shape optimization and inconsistent geometry. In contrast, certain works directly produce 3D information via fast network inferences, but their results are often of low quality and lack geometric details. To holistically improve the quality, consistency, and efficiency of image-to-3D tasks, we propose a cross-domain diffusion model that generates multi-view normal maps and the corresponding color images. To ensure consistency, we employ a multi-view cross-domain attention mechanism that facilitates information exchange across views and modalities. Lastly, we introduce a geometry-aware normal fusion algorithm that extracts high-quality surfaces from the multi-view 2D representations. Our extensive evaluations demonstrate that our method achieves high-quality reconstruction results, robust generalization, and reasonably good efficiency compared to prior works.",
+      "published": "2023-10-23T15:02:23Z",
+      "updated": "2023-11-08T16:50:08Z",
+      "authors": [
+        "Xiaoxiao Long",
+        "Yuan-Chen Guo",
+        "Cheng Lin",
+        "Yuan Liu",
+        "Zhiyang Dou",
+        "Lingjie Liu",
+        "Yuexin Ma",
+        "Song-Hai Zhang",
+        "Marc Habermann",
+        "Christian Theobalt",
+        "Wenping Wang"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "comment": "Project page: https://www.xxlong.site/Wonder3D/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2310.15008v3",
+      "pdf_url": "https://arxiv.org/pdf/2310.15008v3"
+    }
+  },
+  {
+    "year": 2025,
+    "name": "Turbo3D",
+    "category": "Feed-Forward",
+    "arxiv": "https://arxiv.org/pdf/2412.04470",
+    "github": "https://github.com/hzhupku/Turbo3D",
+    "arxiv_meta": {
+      "found": true,
+      "requested_id": "2412.04470",
+      "entry_id": "2412.04470v1",
+      "version": 1,
+      "title": "Turbo3D: Ultra-fast Text-to-3D Generation",
+      "summary": "We present Turbo3D, an ultra-fast text-to-3D system capable of generating high-quality Gaussian splatting assets in under one second. Turbo3D employs a rapid 4-step, 4-view diffusion generator and an efficient feed-forward Gaussian reconstructor, both operating in latent space. The 4-step, 4-view generator is a student model distilled through a novel Dual-Teacher approach, which encourages the student to learn view consistency from a multi-view teacher and photo-realism from a single-view teacher. By shifting the Gaussian reconstructor's inputs from pixel space to latent space, we eliminate the extra image decoding time and halve the transformer sequence length for maximum efficiency. Our method demonstrates superior 3D generation results compared to previous baselines, while operating in a fraction of their runtime.",
+      "published": "2024-12-05T18:59:56Z",
+      "updated": "2024-12-05T18:59:56Z",
+      "authors": [
+        "Hanzhe Hu",
+        "Tianwei Yin",
+        "Fujun Luan",
+        "Yiwei Hu",
+        "Hao Tan",
+        "Zexiang Xu",
+        "Sai Bi",
+        "Shubham Tulsiani",
+        "Kai Zhang"
+      ],
+      "author_affiliations": [],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "comment": "project page: https://turbo-3d.github.io/",
+      "journal_ref": null,
+      "doi": null,
+      "abs_url": "https://arxiv.org/abs/2412.04470v1",
+      "pdf_url": "https://arxiv.org/pdf/2412.04470v1"
+    }
   }
 ]
