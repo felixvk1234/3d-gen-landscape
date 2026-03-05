@@ -4,7 +4,7 @@
     "name": "DreamFusion",
     "category": "Optimization",
     "arxiv": "https://arxiv.org/pdf/2209.14988",
-    "github": "https://github.com/google-research/dreamfusion",
+    "github": "https://github.com/ashawkey/stable-dreamfusion",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2209.14988",
@@ -39,7 +39,7 @@
     "name": "TripoSR",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2403.02151",
-    "github": "https://github.com/VAST-AI/TripoSR",
+    "github": "https://github.com/VAST-AI-Research/TripoSR",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2403.02151",
@@ -116,7 +116,7 @@
     "name": "MorphAny3D",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2601.00204",
-    "github": "",
+    "github": "https://github.com/XiaokunSun/MorphAny3D",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2601.00204",
@@ -192,7 +192,7 @@
     "name": "LRM",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2311.04400",
-    "github": "",
+    "github": "https://github.com/3DTopia/OpenLRM",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2311.04400",
@@ -234,7 +234,7 @@
     "name": "Trellis 2",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2512.14692",
-    "github": "",
+    "github": "https://github.com/microsoft/TRELLIS.2",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2512.14692",
@@ -331,7 +331,7 @@
     "name": "Magic123",
     "category": "Optimization",
     "arxiv": "https://arxiv.org/pdf/2306.17843",
-    "github": "",
+    "github": "https://github.com/guochengqian/Magic123",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2306.17843",
@@ -371,7 +371,7 @@
     "name": "LATTE3D",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2403.15385",
-    "github": "",
+    "github": "https://github.com/Latte3d/Sun",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2403.15385",
@@ -411,7 +411,7 @@
     "name": "Hunyuan3D 2.0",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2501.12202",
-    "github": "",
+    "github": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2501.12202",
@@ -621,7 +621,7 @@
     "name": "Point-E",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2212.08751",
-    "github": "",
+    "github": "https://github.com/openai/point-e",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2212.08751",
@@ -656,7 +656,7 @@
     "name": "Hunyuan 3D 1.0",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2411.02293",
-    "github": "",
+    "github": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2411.02293",
@@ -709,7 +709,7 @@
     "name": "TripoSG",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2502.06608",
-    "github": "",
+    "github": "https://github.com/VAST-AI-Research/TripoSG",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2502.06608",
@@ -750,7 +750,7 @@
     "name": "Shap-E",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2305.02463",
-    "github": "",
+    "github": "https://github.com/openai/shap-e",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2305.02463",
@@ -782,7 +782,7 @@
     "name": "InstantMesh",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2404.07191",
-    "github": "",
+    "github": "https://github.com/TencentARC/InstantMesh",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2404.07191",
@@ -817,7 +817,7 @@
     "name": "Sparc3D",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2501.00001",
-    "github": "",
+    "github": "https://github.com/lizhihao6/Sparc3D",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2501.00001",
@@ -852,7 +852,7 @@
     "name": "Zero-1-to-3",
     "category": "Generative",
     "arxiv": "https://arxiv.org/pdf/2303.11328",
-    "github": "",
+    "github": "https://github.com/cvlab-columbia/zero123",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2303.11328",
@@ -889,7 +889,7 @@
     "name": "LGM",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2402.05054",
-    "github": "",
+    "github": "https://github.com/3DTopia/LGM",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2402.05054",
@@ -924,7 +924,7 @@
     "name": "Rodin Gen-2",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2412.15039",
-    "github": "",
+    "github": "https://github.com/DeemosTech/rodin3d-skills",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2412.15039",
@@ -956,7 +956,7 @@
     "name": "ProlificDreamer",
     "category": "Optimization",
     "arxiv": "https://arxiv.org/pdf/2305.16213",
-    "github": "",
+    "github": "https://github.com/thu-ml/prolificdreamer",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2305.16213",
@@ -993,7 +993,7 @@
     "name": "SV3D",
     "category": "Generative",
     "arxiv": "https://arxiv.org/pdf/2403.12008",
-    "github": "",
+    "github": "https://github.com/jjihwan/SV3D-fine-tune",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2403.12008",
@@ -1086,7 +1086,7 @@
     "name": "One-2-3-45++",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2311.07885",
-    "github": "",
+    "github": "https://github.com/One-2-3-45/One-2-3-45",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2311.07885",
@@ -1127,7 +1127,7 @@
     "name": "MeshAnything",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2406.10163",
-    "github": "",
+    "github": "https://github.com/buaacyw/MeshAnything",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2406.10163",
@@ -1169,7 +1169,7 @@
     "name": "ShapeGen",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2511.20624",
-    "github": "",
+    "github": "https://github.com/jvanaken1/ShapeGen",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2511.20624",
@@ -1205,7 +1205,7 @@
     "name": "DreamGaussian",
     "category": "Optimization",
     "arxiv": "https://arxiv.org/pdf/2309.16653",
-    "github": "",
+    "github": "https://github.com/dreamgaussian/dreamgaussian",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2309.16653",
@@ -1239,7 +1239,7 @@
     "name": "MeshAnything V2",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2408.03211",
-    "github": "",
+    "github": "https://github.com/buaacyw/MeshAnythingV2",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2408.03211",
@@ -1270,7 +1270,7 @@
     "name": "SAM3D",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2511.16624",
-    "github": "",
+    "github": "https://github.com/DYZhang09/SAM3D",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2511.16624",
@@ -1323,7 +1323,7 @@
     "name": "MVDream",
     "category": "Generative",
     "arxiv": "https://arxiv.org/pdf/2308.16512",
-    "github": "",
+    "github": "https://github.com/bytedance/MVDream",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2308.16512",
@@ -1400,7 +1400,7 @@
     "name": "Amodal3R",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2503.13439",
-    "github": "",
+    "github": "https://github.com/Sm0kyWu/Amodal3R",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2503.13439",
@@ -1465,7 +1465,7 @@
     "name": "Material Anything",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2411.15138",
-    "github": "",
+    "github": "https://github.com/3DTopia/MaterialAnything",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2411.15138",
@@ -1499,7 +1499,7 @@
     "name": "ULTRA3D",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2507.17745",
-    "github": "",
+    "github": "https://github.com/buaacyw/ultra3d",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2507.17745",
@@ -1536,7 +1536,7 @@
     "name": "Edgerunner",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2409.18114",
-    "github": "",
+    "github": "https://github.com/NVlabs/EdgeRunner",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2409.18114",
@@ -1572,7 +1572,7 @@
     "name": "Dora",
     "category": "Feed-Forward",
     "arxiv": "https://arxiv.org/pdf/2412.17808",
-    "github": "",
+    "github": "https://github.com/Seed3D/Dora",
     "arxiv_meta": {
       "found": true,
       "requested_id": "2412.17808",
