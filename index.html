@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Gen Landscape 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+</head>
+<body class="bg-slate-900 text-white p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-10">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                3D Generation Model Landscape
+            </h1>
+            <p class="text-slate-400 mt-2">Dynamic overview of SOTA 3D generative AI (2023-2026)</p>
+        </header>
+
+        <div id="wrapper"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+    <script>
+        new gridjs.Grid({
+            search: true,
+            sort: true,
+            resizable: true,
+            columns: [
+                { name: "Year", width: '100px' },
+                "Name",
+                { 
+                    name: "Category", 
+                    formatter: (cell) => gridjs.html(`<span class="px-2 py-1 rounded text-xs font-bold bg-slate-700 text-blue-300">${cell}</span>`)
+                },
+                { 
+                    name: "Paper", 
+                    formatter: (cell) => gridjs.html(`<a href="${cell}" target="_blank" class="text-emerald-400 hover:underline text-sm">arXiv ↗</a>`) 
+                },
+                { 
+                    name: "GitHub", 
+                    formatter: (cell) => gridjs.html(`<a href="${cell}" target="_blank" class="text-blue-400 hover:underline text-sm">Repo ↗</a>`) 
+                }
+            ],
+            server: {
+                url: "./data.json",
+                then: data => data.map(m => [m.year, m.name, m.category, m.arxiv, m.github])
+            },
+            style: {
+                table: { border: 'none' },
+                th: { background: '#1e293b', color: '#94a3b8', border: 'none' },
+                td: { background: '#0f172a', color: '#cbd5e1', border: 'none' }
+            }
+        }).render(document.getElementById("wrapper"));
+    </script>
+</body>
+</html>

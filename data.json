@@ -1,0 +1,23 @@
+[
+  {
+    "year": 2023,
+    "name": "DreamFusion",
+    "category": "Optimization",
+    "arxiv": "https://arxiv.org/pdf/2209.14988",
+    "github": "https://github.com/google-research/dreamfusion"
+  },
+  {
+    "year": 2024,
+    "name": "TripoSR",
+    "category": "Feed-Forward",
+    "arxiv": "https://arxiv.org/pdf/2403.02151",
+    "github": "https://github.com/VAST-AI/TripoSR"
+  },
+  {
+    "year": 2025,
+    "name": "Trellis",
+    "category": "Feed-Forward",
+    "arxiv": "https://arxiv.org/pdf/2412.01506",
+    "github": "https://github.com/microsoft/TRELLIS"
+  }
+]
