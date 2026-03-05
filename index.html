@@ -370,86 +370,119 @@
       padding: 0.9rem 0.85rem 0.95rem;
     }
 
+    .timeline-viewport {
+      overflow-x: auto;
+      padding-bottom: 0.32rem;
+    }
+
     .timeline-track {
       position: relative;
-      padding-left: 1.45rem;
+      display: flex;
+      align-items: flex-start;
+      min-height: 6.1rem;
+      min-width: max-content;
+      padding: 1.25rem 0.55rem 2rem;
+      gap: 0;
     }
 
     .timeline-track::before {
       content: "";
       position: absolute;
-      left: 0.44rem;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #ccb991, #bca780);
-      opacity: 0.8;
+      left: 0.6rem;
+      right: 0.6rem;
+      top: 1.82rem;
+      height: 2px;
+      background: linear-gradient(to right, #ccb991, #bca780);
+      opacity: 0.85;
     }
 
-    .timeline-year-break {
+    .timeline-node {
       position: relative;
-      margin: 0.28rem 0 0.28rem;
-      padding-left: 0.45rem;
+      flex: 0 0 4.9rem;
+      display: flex;
+      justify-content: center;
     }
 
-    .timeline-year-break span {
-      display: inline-block;
-      border: 1px solid #c6b28e;
-      background: #efe3cb;
-      color: #4a3925;
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.14rem 0.42rem;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin: 0.52rem 0 0.58rem;
-      padding-left: 0.4rem;
-    }
-
-    .timeline-dot {
+    .timeline-node-btn {
       position: absolute;
-      left: -1.35rem;
-      top: 0.52rem;
-      width: 0.66rem;
-      height: 0.66rem;
+      left: 50%;
+      top: 1.5rem;
+      transform: translateX(-50%);
+      width: 0.92rem;
+      height: 0.92rem;
       border-radius: 50%;
-      border: 1px solid #99784d;
+      border: 1px solid #967449;
       background: #f2e4ca;
-      box-shadow: 0 0 0 2px rgba(246, 242, 232, 0.95);
+      box-shadow: 0 0 0 3px rgba(246, 242, 232, 0.95);
+      cursor: pointer;
+      z-index: 1;
     }
 
-    .timeline-card {
+    .timeline-node-btn:hover {
+      background: #e8d2aa;
+      transform: translateX(-50%) scale(1.06);
+    }
+
+    .timeline-node-btn.is-active {
+      background: #7d5a2f;
+      border-color: #5e4222;
+      box-shadow: 0 0 0 4px rgba(125, 90, 47, 0.18);
+    }
+
+    .timeline-node-year {
+      position: absolute;
+      top: 2.95rem;
+      transform: translateX(-50%);
+      left: 50%;
+      color: #6e5a3f;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .timeline-node-year.is-hidden {
+      opacity: 0;
+    }
+
+    .timeline-detail {
+      margin-top: 0.32rem;
       border: 1px solid rgba(204, 191, 168, 0.9);
       background: #fffef9;
-      padding: 0.58rem 0.62rem;
+      padding: 0.68rem 0.72rem;
     }
 
-    .timeline-date {
-      margin: 0;
-      color: #6f5d45;
-      font-size: 0.74rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .timeline-detail-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
     }
 
-    .timeline-model {
-      margin: 0.16rem 0 0;
+    .timeline-detail-title {
+      margin: 0.18rem 0 0;
       font-size: 1rem;
       color: #1f2932;
       font-weight: 600;
     }
 
-    .timeline-paper {
-      margin: 0.12rem 0 0;
-      font-size: 0.87rem;
+    .timeline-detail-sub {
+      margin: 0;
+      color: #6f5d45;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .timeline-detail-paper {
+      margin: 0.15rem 0 0;
+      font-size: 0.9rem;
       color: var(--ink-soft);
       line-height: 1.34;
     }
 
-    .timeline-meta {
+    .timeline-detail-meta {
       margin-top: 0.35rem;
       display: flex;
       flex-wrap: wrap;
@@ -457,7 +490,8 @@
       align-items: center;
     }
 
-    .timeline-links {
+    .timeline-detail-links {
+      margin-top: 0.45rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.32rem;
@@ -481,7 +515,7 @@
     .timeline-empty {
       color: #6f624d;
       font-style: italic;
-      padding: 0.2rem 0.1rem;
+      padding: 0.1rem 0.1rem 0.45rem;
     }
 
     @media (max-width: 980px) {
@@ -516,11 +550,11 @@
       }
 
       .timeline-track {
-        padding-left: 1.2rem;
+        padding: 1.2rem 0.4rem 1.95rem;
       }
 
-      .timeline-dot {
-        left: -1.12rem;
+      .timeline-node {
+        flex-basis: 4.2rem;
       }
     }
   </style>
@@ -587,8 +621,11 @@
     </section>
 
     <section id="timelineView" class="timeline-shell" aria-label="Paper timeline view" hidden>
-      <div id="timelineTrack" class="timeline-track"></div>
       <div id="timelineEmpty" class="timeline-empty" hidden>No records to display in timeline.</div>
+      <div class="timeline-viewport">
+        <div id="timelineTrack" class="timeline-track"></div>
+      </div>
+      <article id="timelineDetail" class="timeline-detail" hidden></article>
     </section>
 
     <p class="footer-note">
@@ -604,7 +641,8 @@
       category: "all",
       year: "all",
       sort: "year_desc",
-      view: "table"
+      view: "table",
+      timelineSelectionKey: null
     };
 
     const elements = {
@@ -621,7 +659,8 @@
       paperTableBody: document.getElementById("paperTableBody"),
       emptyState: document.getElementById("emptyState"),
       timelineTrack: document.getElementById("timelineTrack"),
-      timelineEmpty: document.getElementById("timelineEmpty")
+      timelineEmpty: document.getElementById("timelineEmpty"),
+      timelineDetail: document.getElementById("timelineDetail")
     };
 
     function escapeHtml(value) {
@@ -658,6 +697,10 @@
       if (Number.isFinite(year)) return Date.parse(`${year}-01-01T00:00:00Z`);
 
       return Date.parse("1970-01-01T00:00:00Z");
+    }
+
+    function getTimelineKey(row) {
+      return String(row.arxiv_meta?.entry_id || row.arxiv || row.name || "");
     }
 
     function getSearchBlob(row) {
@@ -809,15 +852,20 @@
     function renderTimeline(rows) {
       if (!rows.length) {
         elements.timelineTrack.innerHTML = "";
+        elements.timelineDetail.hidden = true;
         elements.timelineEmpty.hidden = false;
         return;
       }
 
       elements.timelineEmpty.hidden = true;
       const ordered = [...rows].sort((a, b) => getChronoTimestamp(a) - getChronoTimestamp(b));
+      const availableKeys = new Set(ordered.map((row) => getTimelineKey(row)));
+      if (!state.timelineSelectionKey || !availableKeys.has(state.timelineSelectionKey)) {
+        state.timelineSelectionKey = getTimelineKey(ordered[0]);
+      }
 
-      let currentYear = null;
       const html = [];
+      let currentYear = null;
 
       for (const row of ordered) {
         const m = row.arxiv_meta || {};
@@ -825,36 +873,65 @@
         const date = new Date(publishedTs);
         const fallbackYear = Number.isFinite(Number(row.year)) ? Number(row.year) : date.getUTCFullYear();
         const rowYear = m.published ? date.getUTCFullYear() : fallbackYear;
-
-        if (currentYear !== rowYear) {
-          currentYear = rowYear;
-          html.push(`<div class="timeline-year-break"><span>${escapeHtml(currentYear)}</span></div>`);
-        }
-
-        const links = [
-          row.arxiv ? `<a class="timeline-link" href="${escapeHtml(row.arxiv)}" target="_blank" rel="noopener noreferrer">PDF</a>` : "",
-          m.abs_url ? `<a class="timeline-link" href="${escapeHtml(m.abs_url)}" target="_blank" rel="noopener noreferrer">Abstract</a>` : "",
-          row.github ? `<a class="timeline-link" href="${escapeHtml(row.github)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ""
-        ].filter(Boolean).join("");
+        const showYear = currentYear !== rowYear;
+        currentYear = rowYear;
+        const key = getTimelineKey(row);
+        const isActive = key === state.timelineSelectionKey;
+        const pointTitle = `${row.name || "Unknown"} · ${m.published ? formatDate(m.published) : rowYear}`;
 
         html.push(`
-          <article class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-card">
-              <p class="timeline-date">${escapeHtml(m.published ? formatDate(m.published) : String(rowYear))}</p>
-              <p class="timeline-model">${escapeHtml(row.name || "Unknown model")}</p>
-              <p class="timeline-paper">${escapeHtml(m.title || "Unknown title")}</p>
-              <div class="timeline-meta">
-                <span class="chip">${escapeHtml(row.category || "Unknown")}</span>
-                <span class="muted">${escapeHtml(m.primary_category || "-")}</span>
-              </div>
-              <div class="timeline-links">${links || '<span class="muted">No links available</span>'}</div>
-            </div>
-          </article>
+          <div class="timeline-node">
+            <button
+              class="timeline-node-btn${isActive ? " is-active" : ""}"
+              type="button"
+              data-timeline-key="${escapeHtml(key)}"
+              title="${escapeHtml(pointTitle)}"
+              aria-label="${escapeHtml(pointTitle)}"
+            ></button>
+            <span class="timeline-node-year${showYear ? "" : " is-hidden"}">${escapeHtml(String(rowYear))}</span>
+          </div>
         `);
       }
 
       elements.timelineTrack.innerHTML = html.join("");
+      const selected = ordered.find((row) => getTimelineKey(row) === state.timelineSelectionKey) || ordered[0];
+      renderTimelineDetail(selected);
+    }
+
+    function renderTimelineDetail(row) {
+      if (!row) {
+        elements.timelineDetail.hidden = true;
+        return;
+      }
+
+      const m = row.arxiv_meta || {};
+      const categories = (m.categories || [])
+        .slice(0, 8)
+        .map((tag) => `<span class="subject-tag">${escapeHtml(tag)}</span>`)
+        .join("");
+
+      const links = [
+        row.arxiv ? `<a class="timeline-link" href="${escapeHtml(row.arxiv)}" target="_blank" rel="noopener noreferrer">arXiv PDF</a>` : "",
+        m.abs_url ? `<a class="timeline-link" href="${escapeHtml(m.abs_url)}" target="_blank" rel="noopener noreferrer">Abstract</a>` : "",
+        row.github ? `<a class="timeline-link" href="${escapeHtml(row.github)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ""
+      ].filter(Boolean).join("");
+
+      elements.timelineDetail.hidden = false;
+      elements.timelineDetail.innerHTML = `
+        <div class="timeline-detail-head">
+          <span class="chip">${escapeHtml(row.category || "Unknown")}</span>
+          <p class="timeline-detail-sub">${escapeHtml(m.published ? formatDate(m.published) : String(row.year || "-"))}</p>
+          <p class="timeline-detail-sub">${escapeHtml(m.primary_category || "-")}</p>
+        </div>
+        <p class="timeline-detail-title">${escapeHtml(row.name || "Unknown model")}</p>
+        <p class="timeline-detail-paper">${escapeHtml(m.title || "Unknown title")}</p>
+        <div class="timeline-detail-meta">
+          <span class="muted">${escapeHtml(compactAuthors(m.authors || []))}</span>
+          ${categories || '<span class="muted">No categories listed.</span>'}
+        </div>
+        <p class="abstract">${escapeHtml(m.summary || "No abstract available.")}</p>
+        <div class="timeline-detail-links">${links || '<span class="muted">No links available</span>'}</div>
+      `;
     }
 
     function setView(view) {
@@ -895,6 +972,13 @@
 
       elements.tableTab.addEventListener("click", () => setView("table"));
       elements.timelineTab.addEventListener("click", () => setView("timeline"));
+      elements.timelineTrack.addEventListener("click", (event) => {
+        const target = event.target.closest("[data-timeline-key]");
+        if (!target) return;
+
+        state.timelineSelectionKey = target.getAttribute("data-timeline-key");
+        renderTimeline(state.filteredRows);
+      });
 
       elements.paperTableBody.addEventListener("click", (event) => {
         const target = event.target.closest("[data-detail-toggle]");
